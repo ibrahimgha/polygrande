@@ -708,6 +708,13 @@ img {
   line-height: 1.7;
 }
 
+.result-warning {
+  min-height: 1.5rem;
+  margin: 0.6rem 0 0;
+  color: var(--accent);
+  line-height: 1.6;
+}
+
 .calculator-disclaimer {
   max-width: 34rem;
   margin: 0;

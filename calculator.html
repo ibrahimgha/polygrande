@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Polygrande pipe calculator placeholder for estimating stiffness or maximum depth using adjustable project inputs.">
+  <meta name="description" content="Polygrande pipe calculator using published HDPE cover tables to estimate required stiffness or maximum soil cover.">
   <meta name="theme-color" content="#0b0d0f">
   <title>Polygrande | Pipe Calculator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,11 +44,11 @@
     <main>
       <section class="hero hero-calculator" id="top">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Pipe calculator placeholder</p>
-          <h1>Estimate stiffness or max depth with a dummy equation.</h1>
+          <p class="eyebrow">Pipe cover calculator</p>
+          <h1>Estimate required stiffness or maximum soil cover from the published tables.</h1>
           <p class="hero-text">
-            This page is a first-pass engineering tool. For now it uses a placeholder formula so we can lock in the
-            workflow, the inputs, and the page structure before replacing it with the real calculation method.
+            This calculator now follows the maximum allowable soil cover tables you shared for buried HDPE pipes.
+            It uses the selected diameter, installation case, trench width, and cover target to return a table-based result.
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="#calculator">Start Calculation</a>
@@ -57,15 +57,15 @@
           <ul class="hero-metrics" aria-label="Calculator features">
             <li>
               <strong>Mode 1</strong>
-              <span>Select pipe diameter and project conditions to estimate pipe stiffness.</span>
+              <span>Enter cover depth and project conditions to estimate the minimum required pipe stiffness.</span>
             </li>
             <li>
               <strong>Mode 2</strong>
-              <span>Enter a target stiffness and estimate the maximum installation depth.</span>
+              <span>Enter pipe stiffness and estimate the maximum allowable soil cover height.</span>
             </li>
             <li>
-              <strong>Placeholder Logic</strong>
-              <span>The formula is clearly labeled as dummy so we can swap it later without redesigning the page.</span>
+              <strong>Table Logic</strong>
+              <span>Results come from SR 8, SR 16, and SR 31.5 chart values, with interpolation between published bounds.</span>
             </li>
           </ul>
         </div>
@@ -82,11 +82,11 @@
           <div class="hero-signal">
             <article>
               <p>Inputs</p>
-              <strong>Diameter, soil type, pipe depth, trench width, and compaction level</strong>
+              <strong>Diameter, soil condition, installation case, trench width, and target cover or stiffness</strong>
             </article>
             <article>
               <p>Outputs</p>
-              <strong>Estimated stiffness now, real engineering equation later</strong>
+              <strong>Required SR class guidance or maximum allowable cover from the shared charts</strong>
             </article>
           </div>
         </div>
@@ -97,8 +97,8 @@
           <p class="eyebrow">Interactive tool</p>
           <h2>Switch between stiffness estimation and maximum depth estimation.</h2>
           <p>
-            The input set matches your requested workflow. Once you provide the real engineering equation, we can
-            replace the placeholder logic without changing the interface.
+            The calculator uses the published cover-height tables for SR 8, SR 16, and SR 31.5. If trench width falls
+            between `1.5D` and `3.0D`, or stiffness falls between chart classes, the result is linearly interpolated.
           </p>
         </div>
 
@@ -114,25 +114,28 @@
                 <label class="form-field">
                   <span>Pipe diameter</span>
                   <select name="diameter" required>
+                    <option value="150">150 mm</option>
+                    <option value="250">250 mm</option>
                     <option value="300">300 mm</option>
-                    <option value="450">450 mm</option>
+                    <option value="350">350 mm</option>
+                    <option value="400">400 mm</option>
+                    <option value="500">500 mm</option>
                     <option value="600" selected>600 mm</option>
                     <option value="800">800 mm</option>
                     <option value="1000">1000 mm</option>
                     <option value="1200">1200 mm</option>
-                    <option value="1400">1400 mm</option>
-                    <option value="1600">1600 mm</option>
+                    <option value="1500">1500 mm</option>
                   </select>
                 </label>
 
                 <label class="form-field">
-                  <span>Soil type</span>
+                  <span>Soil / backfill type</span>
                   <select name="soilType" required>
-                    <option value="rocky-fill">Rocky fill</option>
-                    <option value="dense-sand" selected>Dense sand</option>
-                    <option value="silty-soil">Silty soil</option>
-                    <option value="clay">Clay</option>
-                    <option value="soft-backfill">Soft backfill</option>
+                    <option value="coarse-native">Sand or rock native soil</option>
+                    <option value="coarse-backfill" selected>Coarse grained backfill (fines &lt; 12%)</option>
+                    <option value="mixed-backfill">Mixed fine/coarse backfill (&lt; 25% fines)</option>
+                    <option value="fine-plastic">Fine grained medium plastic soil (LL &lt; 50)</option>
+                    <option value="clay-borrowed">Clay / borrowed material condition</option>
                   </select>
                 </label>
 
@@ -145,19 +148,18 @@
                 </label>
 
                 <label class="form-field">
-                  <span>Execution type / compaction</span>
-                  <select name="compactionLevel" required>
-                    <option value="light">Light compaction (85%)</option>
-                    <option value="standard" selected>Standard compaction (90%)</option>
-                    <option value="high">High compaction (95%)</option>
-                    <option value="premium">Premium compaction (98%)</option>
+                  <span>Execution type / installation case</span>
+                  <select name="executionType" required>
+                    <option value="caseA" selected>Case A</option>
+                    <option value="caseB">Case B</option>
+                    <option value="borrowed">Borrowed Material</option>
                   </select>
                 </label>
               </div>
 
               <div class="mode-panel" data-mode-panel="stiffness">
                 <label class="form-field">
-                  <span>Pipe depth</span>
+                  <span>Soil cover height</span>
                   <div class="field-with-unit">
                     <input type="number" name="pipeDepth" min="0.3" step="0.1" value="2.4" required>
                     <small>m</small>
@@ -169,29 +171,30 @@
                 <label class="form-field">
                   <span>Target stiffness</span>
                   <div class="field-with-unit">
-                    <input type="number" name="targetStiffness" min="0.1" step="0.1" value="8.0" required>
+                    <input type="number" name="targetStiffness" min="8" max="31.5" step="0.1" value="16.0" required>
                     <small>kN/m2</small>
                   </div>
                 </label>
               </div>
 
               <div class="calculator-actions">
-                <button class="button button-primary" type="submit">Run Placeholder Calculation</button>
-                <p class="calculator-disclaimer">Dummy equation in use for now. Final engineering formula will replace this later.</p>
+                <button class="button button-primary" type="submit">Run Table Lookup</button>
+                <p class="calculator-disclaimer">Uses the supplied SR 8 / 16 / 31.5 cover tables. Widths between `1.5D` and `3.0D` are interpolated.</p>
               </div>
             </form>
           </section>
 
           <aside class="result-panel reveal">
             <p class="eyebrow">Calculation result</p>
-            <h3 id="result-heading">Estimated Pipe Stiffness</h3>
+            <h3 id="result-heading">Minimum Required Pipe Stiffness</h3>
             <div class="result-value">
               <strong id="result-number">0.00</strong>
               <span id="result-unit">kN/m2</span>
             </div>
             <p class="result-copy" id="result-copy">
-              Placeholder output based on the selected pipe and trench conditions.
+              Table-based output from the selected diameter, installation case, and trench-width band.
             </p>
+            <p class="result-warning" id="result-warning"></p>
 
             <div class="result-breakdown">
               <div>
@@ -199,22 +202,22 @@
                 <strong id="result-diameter">600 mm</strong>
               </div>
               <div>
-                <span>Soil factor</span>
-                <strong id="result-soil-factor">1.00</strong>
+                <span>Installation column</span>
+                <strong id="result-scenario">Case A / &le; 1.5D</strong>
               </div>
               <div>
-                <span>Compaction factor</span>
-                <strong id="result-compaction-factor">1.00</strong>
+                <span>Width classification</span>
+                <strong id="result-width-class">2.00D</strong>
               </div>
               <div>
-                <span>Trench factor</span>
-                <strong id="result-trench-factor">1.00</strong>
+                <span>Published support</span>
+                <strong id="result-support-range">SR 8 - SR 31.5</strong>
               </div>
             </div>
 
             <div class="formula-card">
-              <p>Placeholder equation now in use</p>
-              <code id="result-formula">stiffness = (18 x soil x compaction x trenchFactor) / ((depth + 0.5) x diameterMeters)</code>
+              <p>Lookup method now in use</p>
+              <code id="result-formula">Result = published table lookup by diameter and case, with interpolation between 1.5D and 3.0D trench widths when needed.</code>
             </div>
           </aside>
         </div>
@@ -222,14 +225,14 @@
 
       <section class="calculator-notes">
         <article class="calculator-note reveal">
-          <p class="eyebrow">What we can swap later</p>
-          <h3>Real engineering logic</h3>
-          <p class="note-copy">Replace the placeholder factor model with the validated design equation once you share the correct method.</p>
+          <p class="eyebrow">Published method</p>
+          <h3>Table-driven result</h3>
+          <p class="note-copy">The calculator now reads from the shared maximum allowable soil cover tables for SR 8, SR 16, and SR 31.5.</p>
         </article>
         <article class="calculator-note reveal">
-          <p class="eyebrow">What is already ready</p>
-          <h3>Interface and workflow</h3>
-          <p class="note-copy">The page already supports both scenarios, so future work can stay focused on engineering accuracy.</p>
+          <p class="eyebrow">Interpolation rule</p>
+          <h3>Useful between chart bounds</h3>
+          <p class="note-copy">If the trench width or stiffness falls between published chart values, the calculator interpolates between the nearest supported points.</p>
         </article>
       </section>
     </main>

@@ -77,6 +77,7 @@ main {
 .site-header,
 .hero,
 .feature-ribbon,
+.photo-section,
 .capabilities,
 .standards,
 .about,
@@ -2322,6 +2323,7 @@ main > section,
 
 .hero,
 .feature-ribbon,
+.photo-section,
 .capabilities,
 .standards,
 .about,
@@ -2347,6 +2349,14 @@ main > section,
 .feature-ribbon {
   gap: clamp(0.9rem, 1.6vw, 1.3rem);
   margin-top: 0;
+}
+
+.photo-section {
+  padding-top: clamp(2.8rem, 4.5vw, 4.2rem);
+}
+
+.photo-section-tight {
+  padding-top: clamp(1.8rem, 3.4vw, 3rem);
 }
 
 .capabilities,
@@ -2443,7 +2453,47 @@ main > section,
   min-height: clamp(23rem, 32vw, 31rem);
 }
 
+.photo-grid {
+  display: grid;
+  gap: clamp(0.9rem, 1.5vw, 1.2rem);
+  margin-top: 1.7rem;
+}
+
+.photo-grid-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.photo-grid-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.photo-card {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  min-height: clamp(20rem, 28vw, 26rem);
+}
+
+.photo-card img {
+  height: 100%;
+  min-height: clamp(20rem, 28vw, 26rem);
+  object-fit: cover;
+}
+
+.photo-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(31, 95, 168, 0.04), rgba(31, 95, 168, 0.78));
+  pointer-events: none;
+}
+
 .ribbon-card img,
+.photo-card img,
 .standard-photo img,
 .mobile-factory-image img,
 .mobile-factory-poster img,
@@ -2455,6 +2505,7 @@ main > section,
 }
 
 .ribbon-overlay,
+.photo-card figcaption,
 .hero-shot figcaption,
 .standard-photo figcaption,
 .mobile-factory-image figcaption,
@@ -2462,6 +2513,33 @@ main > section,
 .partner-image figcaption,
 .partner-poster figcaption {
   backdrop-filter: blur(3px);
+}
+
+.photo-card figcaption {
+  position: absolute;
+  right: 1.15rem;
+  bottom: 1.15rem;
+  left: 1.15rem;
+  z-index: 1;
+}
+
+.photo-card figcaption span {
+  display: inline-block;
+  margin-bottom: 0.55rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.photo-card figcaption strong {
+  display: block;
+  max-width: 28ch;
+  color: #ffffff;
+  font-size: clamp(1.08rem, 1.8vw, 1.32rem);
+  font-weight: 900;
+  line-height: 1.3;
 }
 
 .section-heading {
@@ -2535,6 +2613,7 @@ main > section,
 @media (max-width: 1080px) {
   .hero,
   .feature-ribbon,
+  .photo-grid,
   .mobile-factory-layout,
   .mobile-factory-grid,
   .partner-layout,
@@ -2551,6 +2630,7 @@ main > section,
   }
 
   .hero-shot img,
+  .photo-card img,
   .standard-photo img,
   .mobile-factory-image img,
   .mobile-factory-poster img,
@@ -2643,6 +2723,7 @@ main > section,
 
   .hero,
   .feature-ribbon,
+  .photo-section,
   .capabilities,
   .standards,
   .about,
@@ -2660,6 +2741,7 @@ main > section,
   .hero-copy,
   .hero-visual,
   .ribbon-card,
+  .photo-card,
   .capability-card,
   .standard-copy,
   .standard-photo,
@@ -2688,6 +2770,11 @@ main > section,
   .js .reveal {
     transform: translate3d(0, calc((1 - var(--reveal-progress, 0)) * 26px), 0);
   }
+
+  .photo-card,
+  .photo-card img {
+    min-height: 16rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2697,6 +2784,7 @@ main > section,
 
   .hero-shot img,
   .ribbon-card img,
+  .photo-card img,
   .standard-photo img,
   .mobile-factory-image img,
   .mobile-factory-poster img,

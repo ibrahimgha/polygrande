@@ -9,7 +9,7 @@ const revealNodes = Array.from(document.querySelectorAll(".reveal"));
 const sectionNodes = Array.from(document.querySelectorAll("main > section"));
 const parallaxMedia = Array.from(
   document.querySelectorAll(
-    ".hero-shot img, .ribbon-card img, .standard-photo img, .mobile-factory-image img, .mobile-factory-poster img, .partner-image img, .partner-poster img"
+    ".hero-shot img, .ribbon-card img, .photo-card img, .standard-photo img, .mobile-factory-image img, .mobile-factory-poster img, .partner-image img, .partner-poster img"
   )
 );
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");

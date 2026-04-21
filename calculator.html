@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Polygrande pipe calculator placeholder for estimating stiffness or maximum depth using adjustable project inputs.">
+  <meta name="theme-color" content="#0b0d0f">
+  <title>Polygrande | Pipe Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Polygrande home">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <span class="brand-pill">POLYGRANDE</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="index.html#products">Products</a>
+        <a href="index.html#standards">Standards</a>
+        <a href="calculator.html" aria-current="page">Calculator</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero hero-calculator" id="top">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Pipe calculator placeholder</p>
+          <h1>Estimate stiffness or max depth with a dummy equation.</h1>
+          <p class="hero-text">
+            This page is a first-pass engineering tool. For now it uses a placeholder formula so we can lock in the
+            workflow, the inputs, and the page structure before replacing it with the real calculation method.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#calculator">Start Calculation</a>
+            <a class="button button-secondary" href="index.html">Back to Main Site</a>
+          </div>
+          <ul class="hero-metrics" aria-label="Calculator features">
+            <li>
+              <strong>Mode 1</strong>
+              <span>Select pipe diameter and project conditions to estimate pipe stiffness.</span>
+            </li>
+            <li>
+              <strong>Mode 2</strong>
+              <span>Enter a target stiffness and estimate the maximum installation depth.</span>
+            </li>
+            <li>
+              <strong>Placeholder Logic</strong>
+              <span>The formula is clearly labeled as dummy so we can swap it later without redesigning the page.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero-visual reveal">
+          <figure class="hero-shot">
+            <img src="assets/images/quality-lab.jpg" alt="Engineer operating a pipe testing station in the quality laboratory." fetchpriority="high">
+            <figcaption>
+              <span>Engineering Context</span>
+              <strong>Lab and testing visuals support the calculator workflow.</strong>
+            </figcaption>
+          </figure>
+
+          <div class="hero-signal">
+            <article>
+              <p>Inputs</p>
+              <strong>Diameter, soil type, pipe depth, trench width, and compaction level</strong>
+            </article>
+            <article>
+              <p>Outputs</p>
+              <strong>Estimated stiffness now, real engineering equation later</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="calculator-shell" id="calculator">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Interactive tool</p>
+          <h2>Switch between stiffness estimation and maximum depth estimation.</h2>
+          <p>
+            The input set matches your requested workflow. Once you provide the real engineering equation, we can
+            replace the placeholder logic without changing the interface.
+          </p>
+        </div>
+
+        <div class="calculator-layout">
+          <section class="calculator-panel reveal">
+            <div class="calculator-mode" role="tablist" aria-label="Calculation mode">
+              <button class="mode-toggle is-active" type="button" data-mode-toggle="stiffness" aria-selected="true">Calculate Stiffness</button>
+              <button class="mode-toggle" type="button" data-mode-toggle="depth" aria-selected="false">Calculate Max Depth</button>
+            </div>
+
+            <form class="calc-form" data-pipe-calculator>
+              <div class="form-grid">
+                <label class="form-field">
+                  <span>Pipe diameter</span>
+                  <select name="diameter" required>
+                    <option value="300">300 mm</option>
+                    <option value="450">450 mm</option>
+                    <option value="600" selected>600 mm</option>
+                    <option value="800">800 mm</option>
+                    <option value="1000">1000 mm</option>
+                    <option value="1200">1200 mm</option>
+                    <option value="1400">1400 mm</option>
+                    <option value="1600">1600 mm</option>
+                  </select>
+                </label>
+
+                <label class="form-field">
+                  <span>Soil type</span>
+                  <select name="soilType" required>
+                    <option value="rocky-fill">Rocky fill</option>
+                    <option value="dense-sand" selected>Dense sand</option>
+                    <option value="silty-soil">Silty soil</option>
+                    <option value="clay">Clay</option>
+                    <option value="soft-backfill">Soft backfill</option>
+                  </select>
+                </label>
+
+                <label class="form-field">
+                  <span>Trench width</span>
+                  <div class="field-with-unit">
+                    <input type="number" name="trenchWidth" min="0.5" step="0.1" value="1.2" required>
+                    <small>m</small>
+                  </div>
+                </label>
+
+                <label class="form-field">
+                  <span>Execution type / compaction</span>
+                  <select name="compactionLevel" required>
+                    <option value="light">Light compaction (85%)</option>
+                    <option value="standard" selected>Standard compaction (90%)</option>
+                    <option value="high">High compaction (95%)</option>
+                    <option value="premium">Premium compaction (98%)</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="mode-panel" data-mode-panel="stiffness">
+                <label class="form-field">
+                  <span>Pipe depth</span>
+                  <div class="field-with-unit">
+                    <input type="number" name="pipeDepth" min="0.3" step="0.1" value="2.4" required>
+                    <small>m</small>
+                  </div>
+                </label>
+              </div>
+
+              <div class="mode-panel" data-mode-panel="depth" hidden>
+                <label class="form-field">
+                  <span>Target stiffness</span>
+                  <div class="field-with-unit">
+                    <input type="number" name="targetStiffness" min="0.1" step="0.1" value="8.0" required>
+                    <small>kN/m2</small>
+                  </div>
+                </label>
+              </div>
+
+              <div class="calculator-actions">
+                <button class="button button-primary" type="submit">Run Placeholder Calculation</button>
+                <p class="calculator-disclaimer">Dummy equation in use for now. Final engineering formula will replace this later.</p>
+              </div>
+            </form>
+          </section>
+
+          <aside class="result-panel reveal">
+            <p class="eyebrow">Calculation result</p>
+            <h3 id="result-heading">Estimated Pipe Stiffness</h3>
+            <div class="result-value">
+              <strong id="result-number">0.00</strong>
+              <span id="result-unit">kN/m2</span>
+            </div>
+            <p class="result-copy" id="result-copy">
+              Placeholder output based on the selected pipe and trench conditions.
+            </p>
+
+            <div class="result-breakdown">
+              <div>
+                <span>Diameter</span>
+                <strong id="result-diameter">600 mm</strong>
+              </div>
+              <div>
+                <span>Soil factor</span>
+                <strong id="result-soil-factor">1.00</strong>
+              </div>
+              <div>
+                <span>Compaction factor</span>
+                <strong id="result-compaction-factor">1.00</strong>
+              </div>
+              <div>
+                <span>Trench factor</span>
+                <strong id="result-trench-factor">1.00</strong>
+              </div>
+            </div>
+
+            <div class="formula-card">
+              <p>Placeholder equation now in use</p>
+              <code id="result-formula">stiffness = (18 x soil x compaction x trenchFactor) / ((depth + 0.5) x diameterMeters)</code>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="calculator-notes">
+        <article class="calculator-note reveal">
+          <p class="eyebrow">What we can swap later</p>
+          <h3>Real engineering logic</h3>
+          <p class="note-copy">Replace the placeholder factor model with the validated design equation once you share the correct method.</p>
+        </article>
+        <article class="calculator-note reveal">
+          <p class="eyebrow">What is already ready</p>
+          <h3>Interface and workflow</h3>
+          <p class="note-copy">The page already supports both scenarios, so future work can stay focused on engineering accuracy.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Polygrande industrial website stub</p>
+      <p>&copy; <span id="year"></span> Polygrande. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="calculator.js"></script>
+</body>
+</html>

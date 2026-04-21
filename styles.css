@@ -666,10 +666,10 @@ img {
 
 .hero {
   display: grid;
-  grid-template-columns: 1.02fr 0.98fr;
-  gap: 1.4rem;
-  align-items: stretch;
-  padding: 2.8rem 0 2rem;
+  grid-template-columns: 0.94fr 1.06fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1.35rem 0 1.25rem;
 }
 
 .hero-copy,
@@ -691,25 +691,24 @@ img {
 .about-card,
 .cta {
   overflow: hidden;
-  border-color: rgba(31, 95, 168, 0.08);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 48%),
-    linear-gradient(180deg, var(--blue) 0%, var(--blue-deep) 100%);
-  color: #ffffff;
+  border-color: rgba(31, 95, 168, 0.12);
+  background: linear-gradient(180deg, #ffffff 0%, #f6faff 100%);
+  color: var(--text);
 }
 
 .hero-copy {
-  padding: clamp(2rem, 5vw, 4rem);
-  border-radius: calc(var(--radius) + 8px);
+  padding: clamp(1.35rem, 2.8vw, 2rem);
+  border-radius: 24px;
+  box-shadow: 0 14px 34px rgba(31, 95, 168, 0.1);
 }
 
 .hero-copy::after {
   content: "";
   position: absolute;
-  inset: auto auto 0 0;
-  width: 42%;
-  height: 0.38rem;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), transparent);
+  inset: 0 0 auto 0;
+  width: 100%;
+  height: 0.28rem;
+  background: linear-gradient(90deg, var(--blue), rgba(31, 95, 168, 0.18) 42%, transparent 76%);
 }
 
 .eyebrow {
@@ -734,8 +733,9 @@ img {
 }
 
 .hero h1 {
-  max-width: 11ch;
-  font-size: clamp(3rem, 8vw, 6rem);
+  max-width: 12.2ch;
+  font-size: clamp(2.05rem, 4.35vw, 4rem);
+  line-height: 0.94;
 }
 
 .hero-text,
@@ -755,32 +755,34 @@ img {
 .hero-copy .eyebrow,
 .about-card .eyebrow,
 .cta .eyebrow {
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--blue);
 }
 
 .hero-copy .hero-text,
 .hero-copy .hero-metrics span,
 .about-card p:not(.eyebrow),
 .cta p:not(.eyebrow) {
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--muted);
 }
 
 .hero-copy h1,
 .about-card h2,
 .cta h2 {
-  color: #ffffff;
+  color: var(--blue-deep);
 }
 
 .hero-text {
   max-width: 56ch;
-  margin: 1.4rem 0 1.8rem;
+  margin: 0.75rem 0 1rem;
+  font-size: 0.97rem;
+  line-height: 1.6;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.9rem;
-  margin-bottom: 2rem;
+  gap: 0.7rem;
+  margin-bottom: 0.95rem;
 }
 
 .hero-actions-centered {
@@ -819,20 +821,20 @@ img {
 
 .hero-copy .button-primary,
 .cta .button-primary {
-  background: #ffffff;
-  color: var(--blue);
+  background: var(--blue);
+  color: #ffffff;
 }
 
 .hero-copy .button-secondary,
 .cta .button-secondary {
-  border-color: rgba(255, 255, 255, 0.7);
-  color: #ffffff;
+  border-color: var(--line-strong);
+  color: var(--blue);
 }
 
 .hero-metrics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.8rem;
+  gap: 0.45rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -841,15 +843,15 @@ img {
 .hero-metrics li,
 .standard-points div,
 .about-list div {
-  padding: 1rem;
+  padding: 0.8rem 0.85rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   background: var(--surface-soft);
 }
 
 .hero-copy .hero-metrics li {
-  border-color: rgba(255, 255, 255, 0.24);
-  background: rgba(255, 255, 255, 0.13);
+  border-color: #d8e5f6;
+  background: #f8fbff;
 }
 
 .hero-metrics strong,
@@ -858,22 +860,23 @@ img {
 .about-list strong,
 .standard-points strong {
   display: block;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
   color: var(--blue);
-  font-size: 1.08rem;
+  font-size: 0.94rem;
   font-weight: 900;
 }
 
 .hero-copy .hero-metrics strong {
-  color: #ffffff;
+  color: var(--blue);
 }
 
 .hero-visual {
   display: grid;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: calc(var(--radius) + 12px);
+  gap: 0.6rem;
+  padding: 0.6rem;
+  border-radius: 26px;
   background: linear-gradient(180deg, #ffffff 0%, #eef4fb 100%);
+  box-shadow: 0 14px 34px rgba(31, 95, 168, 0.09);
 }
 
 .hero-shot,
@@ -888,7 +891,7 @@ img {
 
 .hero-shot img {
   height: 100%;
-  min-height: 31rem;
+  min-height: 20.5rem;
   object-fit: cover;
 }
 
@@ -898,16 +901,16 @@ img {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(31, 95, 168, 0.04), rgba(31, 95, 168, 0.82));
+  background: linear-gradient(180deg, rgba(31, 95, 168, 0.03), rgba(31, 95, 168, 0.64));
   pointer-events: none;
 }
 
 .hero-shot figcaption,
 .standard-photo figcaption {
   position: absolute;
-  right: 1.2rem;
-  bottom: 1.2rem;
-  left: 1.2rem;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
   z-index: 1;
 }
 
@@ -927,7 +930,7 @@ img {
   display: block;
   max-width: 26ch;
   color: #ffffff;
-  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-size: clamp(1rem, 1.7vw, 1.22rem);
   font-weight: 900;
   line-height: 1.3;
 }
@@ -935,20 +938,20 @@ img {
 .hero-signal {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.9rem;
+  gap: 0.65rem;
 }
 
 .hero-signal article {
-  padding: 1rem;
+  padding: 0.72rem 0.78rem;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 16px;
   background: var(--surface);
 }
 
 .hero-signal p {
   margin: 0 0 0.4rem;
   color: var(--blue);
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -957,8 +960,9 @@ img {
 .hero-signal strong {
   display: block;
   color: var(--text);
+  font-size: 0.9rem;
   font-weight: 800;
-  line-height: 1.55;
+  line-height: 1.45;
 }
 
 .feature-ribbon {
@@ -1140,15 +1144,15 @@ img {
 }
 
 .hero-calculator .hero-shot img {
-  min-height: 28rem;
+  min-height: 19.5rem;
 }
 
 .hero-mobile-factory .hero-shot img {
-  min-height: 28rem;
+  min-height: 19.5rem;
 }
 
 .hero-partner .hero-shot img {
-  min-height: 28rem;
+  min-height: 19.5rem;
 }
 
 .mobile-factory-shell,
@@ -1676,7 +1680,7 @@ img {
   .mobile-factory-poster img,
   .partner-image img,
   .partner-poster img {
-    min-height: 26rem;
+    min-height: 18.5rem;
   }
 }
 
@@ -1686,6 +1690,15 @@ img {
   .result-breakdown,
   .form-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero {
+    padding-top: 1rem;
+  }
+
+  .hero h1 {
+    max-width: 13ch;
+    font-size: clamp(1.9rem, 6.2vw, 3.1rem);
   }
 
   .site-header {
@@ -1768,7 +1781,7 @@ img {
   }
 
   .hero {
-    padding-top: 2rem;
+    padding-top: 0.85rem;
   }
 
   .hero-metrics,
@@ -1787,7 +1800,7 @@ img {
   .mobile-factory-poster img,
   .partner-image img,
   .partner-poster img {
-    min-height: 22rem;
+    min-height: 15.5rem;
   }
 
   .site-footer {

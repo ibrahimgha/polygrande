@@ -12,6 +12,13 @@ const parallaxMedia = Array.from(
     ".hero-shot img, .ribbon-card img, .photo-card img, .standard-photo img, .mobile-factory-image img, .mobile-factory-poster img, .partner-image img, .partner-poster img"
   )
 );
+const videoStories = Array.from(document.querySelectorAll("[data-video-story]")).map((stage) => ({
+  stage,
+  scrollArea: stage.closest(".video-story-scroll"),
+  cards: Array.from(stage.querySelectorAll("[data-story-card]")),
+  progressBar: stage.querySelector("[data-story-progress]"),
+  media: stage.querySelector("video")
+}));
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 if (yearNode) {
@@ -138,6 +145,34 @@ function updateScrollMotion() {
       char.classList.toggle("is-active", index < activeChars);
     });
   });
+
+  videoStories.forEach((story) => {
+    if (!story.scrollArea || !story.cards.length) {
+      return;
+    }
+
+    const rect = story.scrollArea.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || 1;
+    const totalScroll = Math.max(rect.height - viewportHeight, 1);
+    const scrolled = clamp(-rect.top, 0, totalScroll);
+    const progress = scrolled / totalScroll;
+    const motion = progress * Math.max(story.cards.length - 1, 0);
+
+    story.stage.style.setProperty("--story-progress", progress.toFixed(3));
+
+    if (story.progressBar) {
+      story.progressBar.style.transform = `scaleX(${progress.toFixed(3)})`;
+    }
+
+    story.cards.forEach((card, index) => {
+      const offset = index - motion;
+      const distance = Math.min(Math.abs(offset), 2.1);
+
+      card.style.setProperty("--card-offset", offset.toFixed(3));
+      card.style.setProperty("--card-distance", distance.toFixed(3));
+      card.classList.toggle("is-current", distance < 0.55);
+    });
+  });
 }
 
 function resetMotionState() {
@@ -156,6 +191,20 @@ function resetMotionState() {
 
   karaokeTargets.forEach(({ chars }) => {
     chars.forEach((char) => char.classList.add("is-active"));
+  });
+
+  videoStories.forEach((story) => {
+    story.stage.style.setProperty("--story-progress", "1");
+
+    if (story.progressBar) {
+      story.progressBar.style.transform = "scaleX(1)";
+    }
+
+    story.cards.forEach((card, index) => {
+      card.style.setProperty("--card-offset", "0");
+      card.style.setProperty("--card-distance", "0");
+      card.classList.toggle("is-current", index === 0);
+    });
   });
 }
 
@@ -189,6 +238,12 @@ function handleMotionPreferenceChange() {
 if (reducedMotionQuery.matches) {
   resetMotionState();
 } else {
+  videoStories.forEach(({ media }) => {
+    if (media && typeof media.play === "function") {
+      media.play().catch(() => {});
+    }
+  });
+
   updateScrollMotion();
   window.addEventListener("scroll", requestMotionFrame, { passive: true });
   window.addEventListener("resize", requestMotionFrame);

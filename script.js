@@ -16,7 +16,6 @@ const videoStories = Array.from(document.querySelectorAll("[data-video-story]"))
   stage,
   scrollArea: stage.closest(".video-story-scroll"),
   cards: Array.from(stage.querySelectorAll("[data-story-card]")),
-  progressBar: stage.querySelector("[data-story-progress]"),
   media: stage.querySelector("video")
 }));
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -160,16 +159,14 @@ function updateScrollMotion() {
 
     story.stage.style.setProperty("--story-progress", progress.toFixed(3));
 
-    if (story.progressBar) {
-      story.progressBar.style.transform = `scaleX(${progress.toFixed(3)})`;
-    }
-
     story.cards.forEach((card, index) => {
       const offset = index - motion;
-      const distance = Math.min(Math.abs(offset), 2.1);
+      const distance = Math.min(Math.abs(offset), 1.8);
+      const opacity = clamp(1 - (distance * 1.35), 0, 1);
 
       card.style.setProperty("--card-offset", offset.toFixed(3));
       card.style.setProperty("--card-distance", distance.toFixed(3));
+      card.style.opacity = opacity.toFixed(3);
       card.classList.toggle("is-current", distance < 0.55);
     });
   });
@@ -196,13 +193,10 @@ function resetMotionState() {
   videoStories.forEach((story) => {
     story.stage.style.setProperty("--story-progress", "1");
 
-    if (story.progressBar) {
-      story.progressBar.style.transform = "scaleX(1)";
-    }
-
     story.cards.forEach((card, index) => {
       card.style.setProperty("--card-offset", "0");
       card.style.setProperty("--card-distance", "0");
+      card.style.opacity = index === 0 ? "1" : "0";
       card.classList.toggle("is-current", index === 0);
     });
   });

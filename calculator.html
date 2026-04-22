@@ -8,7 +8,7 @@
   <title>Polygrande | Pipe Calculator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -47,8 +47,8 @@
           <p class="eyebrow">Pipe cover calculator</p>
           <h1>Estimate required stiffness or maximum soil cover from the published tables.</h1>
           <p class="hero-text">
-            This calculator now follows the maximum allowable soil cover tables you shared for buried HDPE pipes.
-            It uses the selected diameter, installation case, trench width, and cover target to return a table-based result.
+            Use the published maximum allowable soil cover tables to estimate required pipe stiffness or maximum
+            allowable cover for buried HDPE pipe systems.
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="#calculator">Start Calculation</a>
@@ -75,7 +75,7 @@
             <img src="assets/images/media-lab-engineer.jpg" alt="Quality-control engineer reviewing test data beside a large pipe specimen in the laboratory." fetchpriority="high">
             <figcaption>
               <span>Engineering Context</span>
-              <strong>Lab and testing visuals now support the calculator workflow directly.</strong>
+              <strong>Lab and testing visuals support the calculator workflow directly.</strong>
             </figcaption>
           </figure>
 
@@ -98,7 +98,7 @@
           <h2>Switch between stiffness estimation and maximum depth estimation.</h2>
           <p>
             The calculator uses the published cover-height tables for SR 8, SR 16, and SR 31.5. If trench width falls
-            between `1.5D` and `3.0D`, or stiffness falls between chart classes, the result is linearly interpolated.
+            between 1.5D and 3.0D, or stiffness falls between chart classes, the result is linearly interpolated.
           </p>
         </div>
 
@@ -179,7 +179,7 @@
 
               <div class="calculator-actions">
                 <button class="button button-primary" type="submit">Run Table Lookup</button>
-                <p class="calculator-disclaimer">Uses the supplied SR 8 / 16 / 31.5 cover tables. Widths between `1.5D` and `3.0D` are interpolated.</p>
+                <p class="calculator-disclaimer">Uses the supplied SR 8 / 16 / 31.5 cover tables. Widths between 1.5D and 3.0D are interpolated.</p>
               </div>
             </form>
           </section>
@@ -216,7 +216,7 @@
             </div>
 
             <div class="formula-card">
-              <p>Lookup method now in use</p>
+              <p>Lookup method</p>
               <code id="result-formula">Result = published table lookup by diameter and case, with interpolation between 1.5D and 3.0D trench widths when needed.</code>
             </div>
           </aside>
@@ -227,7 +227,7 @@
         <article class="calculator-note reveal">
           <p class="eyebrow">Published method</p>
           <h3>Table-driven result</h3>
-          <p class="note-copy">The calculator now reads from the shared maximum allowable soil cover tables for SR 8, SR 16, and SR 31.5.</p>
+          <p class="note-copy">The calculator reads from the shared maximum allowable soil cover tables for SR 8, SR 16, and SR 31.5.</p>
         </article>
         <article class="calculator-note reveal">
           <p class="eyebrow">Interpolation rule</p>
@@ -239,7 +239,7 @@
       <section class="photo-section photo-section-tight" aria-labelledby="calculator-gallery-title">
         <div class="section-heading reveal">
           <p class="eyebrow">Testing visuals</p>
-          <h2 id="calculator-gallery-title">The calculator can now sit beside real inspection and stiffness imagery.</h2>
+          <h2 id="calculator-gallery-title">Inspection and stiffness imagery keeps the calculator connected to the lab.</h2>
           <p>
             These supporting photos keep the engineering page anchored in the physical testing environment, connecting
             lookup results to specimen preparation, lab review, and ring stiffness verification.

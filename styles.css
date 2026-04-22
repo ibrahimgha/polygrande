@@ -4720,101 +4720,131 @@ main {
   }
 }
 
-/* Final homepage hero compact fit */
+/* Final shared hero format */
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner),
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy,
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-visual {
+.hero {
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr) !important;
+  min-height: calc(100svh - var(--header-height)) !important;
+  background: var(--bg-soft) !important;
+  border-top: 0 !important;
+}
+
+.hero .hero-copy,
+.hero .hero-visual {
   min-height: calc(100svh - var(--header-height)) !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy {
+.hero .hero-copy {
   justify-content: center !important;
   padding: clamp(1.2rem, 2.5vw, 2.2rem) clamp(1rem, 2.5vw, 2.35rem) clamp(1rem, 2.3vw, 1.8rem) !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) h1 {
-  max-width: 7.45ch !important;
-  font-size: clamp(2.2rem, 4vw, 4.45rem) !important;
-  line-height: 0.92 !important;
+.hero .hero-copy .eyebrow {
+  display: none !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-text {
-  max-width: 30rem !important;
+.hero h1 {
+  max-width: 8.85ch !important;
+  font-size: clamp(2.05rem, 3.75vw, 4.2rem) !important;
+  line-height: 0.93 !important;
+}
+
+.hero .hero-text {
+  max-width: 32rem !important;
   margin-top: 0.8rem !important;
   font-size: clamp(0.93rem, 0.94vw, 1rem) !important;
   line-height: 1.55 !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-actions {
+.hero .hero-actions {
   margin-top: 0.95rem !important;
   gap: 0.65rem 1.05rem !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-metrics {
+.hero .hero-metrics {
   margin-top: 1rem !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-metrics li {
+.hero .hero-metrics li {
   gap: 0.8rem !important;
   padding: 0.62rem 0 !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy .hero-metrics strong {
+.hero .hero-copy .hero-metrics strong {
   font-size: 0.9rem !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy .hero-metrics span {
+.hero .hero-copy .hero-metrics span {
   font-size: 0.9rem !important;
   line-height: 1.4 !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-shot img {
+.hero .hero-shot img {
   min-height: calc(100svh - var(--header-height) - 3rem) !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-shot figcaption {
+.hero .hero-shot figcaption {
   padding: 1rem 1.15rem 1.1rem !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-shot figcaption strong {
+.hero .hero-shot figcaption strong {
   font-size: 0.92rem !important;
   line-height: 1.42 !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-signal article {
+.hero .hero-signal article {
   padding: 0.82rem 1rem 0.88rem !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-signal strong {
+.hero .hero-signal strong {
   font-size: 0.88rem !important;
   line-height: 1.4 !important;
 }
 
 @media (max-height: 860px) and (min-width: 901px) {
-  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy {
+  .hero .hero-copy {
     padding: 1rem 1rem 1.05rem !important;
   }
 
-  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) h1 {
-    font-size: clamp(2.05rem, 3.65vw, 4rem) !important;
+  .hero h1 {
+    font-size: clamp(1.95rem, 3.35vw, 3.85rem) !important;
   }
 
-  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-text {
+  .hero .hero-text {
     margin-top: 0.72rem !important;
     font-size: 0.92rem !important;
   }
 
-  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-actions {
+  .hero .hero-actions {
     margin-top: 0.82rem !important;
   }
 
-  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-metrics {
+  .hero .hero-metrics {
     margin-top: 0.85rem !important;
   }
 
-  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-metrics li {
+  .hero .hero-metrics li {
     padding: 0.5rem 0 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero .hero-copy {
+    justify-content: flex-end !important;
+    padding: 1.7rem 0.95rem 1.55rem !important;
+  }
+
+  .hero h1 {
+    max-width: 10.2ch !important;
+    font-size: clamp(2.2rem, 9vw, 3.95rem) !important;
+  }
+
+  .hero .hero-shot img {
+    min-height: 22rem !important;
   }
 }
 
@@ -5862,100 +5892,130 @@ main {
   color: #ffffff !important;
 }
 
-/* Final homepage hero compact fit */
+/* Final shared hero format */
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner),
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy,
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-visual {
+.hero {
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr) !important;
+  min-height: calc(100svh - var(--header-height)) !important;
+  background: var(--bg-soft) !important;
+  border-top: 0 !important;
+}
+
+.hero .hero-copy,
+.hero .hero-visual {
   min-height: calc(100svh - var(--header-height)) !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy {
+.hero .hero-copy {
   justify-content: center !important;
   padding: clamp(1.2rem, 2.5vw, 2.2rem) clamp(1rem, 2.5vw, 2.35rem) clamp(1rem, 2.3vw, 1.8rem) !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) h1 {
-  max-width: 7.45ch !important;
-  font-size: clamp(2.2rem, 4vw, 4.45rem) !important;
-  line-height: 0.92 !important;
+.hero .hero-copy .eyebrow {
+  display: none !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-text {
-  max-width: 30rem !important;
+.hero h1 {
+  max-width: 8.85ch !important;
+  font-size: clamp(2.05rem, 3.75vw, 4.2rem) !important;
+  line-height: 0.93 !important;
+}
+
+.hero .hero-text {
+  max-width: 32rem !important;
   margin-top: 0.8rem !important;
   font-size: clamp(0.93rem, 0.94vw, 1rem) !important;
   line-height: 1.55 !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-actions {
+.hero .hero-actions {
   margin-top: 0.95rem !important;
   gap: 0.65rem 1.05rem !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-metrics {
+.hero .hero-metrics {
   margin-top: 1rem !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-metrics li {
+.hero .hero-metrics li {
   gap: 0.8rem !important;
   padding: 0.62rem 0 !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy .hero-metrics strong {
+.hero .hero-copy .hero-metrics strong {
   font-size: 0.9rem !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy .hero-metrics span {
+.hero .hero-copy .hero-metrics span {
   font-size: 0.9rem !important;
   line-height: 1.4 !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-shot img {
+.hero .hero-shot img {
   min-height: calc(100svh - var(--header-height) - 3rem) !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-shot figcaption {
+.hero .hero-shot figcaption {
   padding: 1rem 1.15rem 1.1rem !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-shot figcaption strong {
+.hero .hero-shot figcaption strong {
   font-size: 0.92rem !important;
   line-height: 1.42 !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-signal article {
+.hero .hero-signal article {
   padding: 0.82rem 1rem 0.88rem !important;
 }
 
-.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-signal strong {
+.hero .hero-signal strong {
   font-size: 0.88rem !important;
   line-height: 1.4 !important;
 }
 
 @media (max-height: 860px) and (min-width: 901px) {
-  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy {
+  .hero .hero-copy {
     padding: 1rem 1rem 1.05rem !important;
   }
 
-  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) h1 {
-    font-size: clamp(2.05rem, 3.65vw, 4rem) !important;
+  .hero h1 {
+    font-size: clamp(1.95rem, 3.35vw, 3.85rem) !important;
   }
 
-  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-text {
+  .hero .hero-text {
     margin-top: 0.72rem !important;
     font-size: 0.92rem !important;
   }
 
-  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-actions {
+  .hero .hero-actions {
     margin-top: 0.82rem !important;
   }
 
-  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-metrics {
+  .hero .hero-metrics {
     margin-top: 0.85rem !important;
   }
 
-  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-metrics li {
+  .hero .hero-metrics li {
     padding: 0.5rem 0 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero .hero-copy {
+    justify-content: flex-end !important;
+    padding: 1.7rem 0.95rem 1.55rem !important;
+  }
+
+  .hero h1 {
+    max-width: 10.2ch !important;
+    font-size: clamp(2.2rem, 9vw, 3.95rem) !important;
+  }
+
+  .hero .hero-shot img {
+    min-height: 22rem !important;
   }
 }

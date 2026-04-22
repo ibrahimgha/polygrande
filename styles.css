@@ -4848,6 +4848,284 @@ main {
   }
 }
 
+/* Final inner-page hero compression */
+
+.hero.hero-calculator h1,
+.hero.hero-mobile-factory h1,
+.hero.hero-partner h1 {
+  max-width: 10.8ch !important;
+  font-size: clamp(1.85rem, 3.05vw, 3.45rem) !important;
+  letter-spacing: -0.055em !important;
+}
+
+.hero.hero-calculator .hero-text,
+.hero.hero-mobile-factory .hero-text,
+.hero.hero-partner .hero-text {
+  max-width: 29rem !important;
+  margin-top: 0.65rem !important;
+  font-size: clamp(0.88rem, 0.88vw, 0.96rem) !important;
+  line-height: 1.45 !important;
+}
+
+.hero.hero-calculator .hero-actions,
+.hero.hero-mobile-factory .hero-actions,
+.hero.hero-partner .hero-actions {
+  margin-top: 0.8rem !important;
+  gap: 0.55rem 0.95rem !important;
+}
+
+.hero.hero-calculator .hero-metrics,
+.hero.hero-mobile-factory .hero-metrics,
+.hero.hero-partner .hero-metrics {
+  gap: 0.35rem !important;
+  margin-top: 0.78rem !important;
+  border-top: 0 !important;
+}
+
+.hero.hero-calculator .hero-metrics li,
+.hero.hero-mobile-factory .hero-metrics li,
+.hero.hero-partner .hero-metrics li {
+  display: grid !important;
+  grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr) !important;
+  align-items: start !important;
+  gap: 0.3rem 0.95rem !important;
+  padding: 0.55rem 0.7rem !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: none !important;
+}
+
+.hero.hero-calculator .hero-copy .hero-metrics strong,
+.hero.hero-mobile-factory .hero-copy .hero-metrics strong,
+.hero.hero-partner .hero-copy .hero-metrics strong {
+  margin: 0 !important;
+  font-size: 0.84rem !important;
+}
+
+.hero.hero-calculator .hero-copy .hero-metrics span,
+.hero.hero-mobile-factory .hero-copy .hero-metrics span,
+.hero.hero-partner .hero-copy .hero-metrics span {
+  color: rgba(255, 255, 255, 0.74) !important;
+  font-size: 0.84rem !important;
+  line-height: 1.34 !important;
+  text-align: left !important;
+}
+
+.hero.hero-calculator .hero-shot img,
+.hero.hero-mobile-factory .hero-shot img,
+.hero.hero-partner .hero-shot img {
+  min-height: calc(100svh - var(--header-height) - 2.35rem) !important;
+}
+
+.hero.hero-calculator .hero-shot figcaption,
+.hero.hero-mobile-factory .hero-shot figcaption,
+.hero.hero-partner .hero-shot figcaption {
+  padding: 0.85rem 1rem 0.95rem !important;
+}
+
+.hero.hero-calculator .hero-shot figcaption strong,
+.hero.hero-mobile-factory .hero-shot figcaption strong,
+.hero.hero-partner .hero-shot figcaption strong {
+  font-size: 0.88rem !important;
+  line-height: 1.38 !important;
+}
+
+.hero.hero-calculator .hero-signal article,
+.hero.hero-mobile-factory .hero-signal article,
+.hero.hero-partner .hero-signal article {
+  padding: 0.72rem 0.9rem 0.76rem !important;
+}
+
+.hero.hero-calculator .hero-signal strong,
+.hero.hero-mobile-factory .hero-signal strong,
+.hero.hero-partner .hero-signal strong {
+  font-size: 0.84rem !important;
+  line-height: 1.34 !important;
+}
+
+@media (max-height: 860px) and (min-width: 901px) {
+  .hero.hero-calculator h1,
+  .hero.hero-mobile-factory h1,
+  .hero.hero-partner h1 {
+    font-size: clamp(1.7rem, 2.6vw, 3.05rem) !important;
+    max-width: 11.2ch !important;
+  }
+
+  .hero.hero-calculator .hero-copy,
+  .hero.hero-mobile-factory .hero-copy,
+  .hero.hero-partner .hero-copy {
+    padding: 0.92rem 0.95rem 0.98rem !important;
+  }
+
+  .hero.hero-calculator .hero-text,
+  .hero.hero-mobile-factory .hero-text,
+  .hero.hero-partner .hero-text {
+    font-size: 0.85rem !important;
+    line-height: 1.36 !important;
+  }
+
+  .hero.hero-calculator .hero-metrics li,
+  .hero.hero-mobile-factory .hero-metrics li,
+  .hero.hero-partner .hero-metrics li {
+    padding: 0.46rem 0.58rem !important;
+    grid-template-columns: minmax(0, 7.8rem) minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero.hero-calculator h1,
+  .hero.hero-mobile-factory h1,
+  .hero.hero-partner h1 {
+    max-width: 10.5ch !important;
+    font-size: clamp(1.95rem, 7.6vw, 3.3rem) !important;
+  }
+
+  .hero.hero-calculator .hero-metrics li,
+  .hero.hero-mobile-factory .hero-metrics li,
+  .hero.hero-partner .hero-metrics li {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Final inner-page hero compression */
+
+.hero.hero-calculator h1,
+.hero.hero-mobile-factory h1,
+.hero.hero-partner h1 {
+  max-width: 10.8ch !important;
+  font-size: clamp(1.85rem, 3.05vw, 3.45rem) !important;
+  letter-spacing: -0.055em !important;
+}
+
+.hero.hero-calculator .hero-text,
+.hero.hero-mobile-factory .hero-text,
+.hero.hero-partner .hero-text {
+  max-width: 29rem !important;
+  margin-top: 0.65rem !important;
+  font-size: clamp(0.88rem, 0.88vw, 0.96rem) !important;
+  line-height: 1.45 !important;
+}
+
+.hero.hero-calculator .hero-actions,
+.hero.hero-mobile-factory .hero-actions,
+.hero.hero-partner .hero-actions {
+  margin-top: 0.8rem !important;
+  gap: 0.55rem 0.95rem !important;
+}
+
+.hero.hero-calculator .hero-metrics,
+.hero.hero-mobile-factory .hero-metrics,
+.hero.hero-partner .hero-metrics {
+  gap: 0.35rem !important;
+  margin-top: 0.78rem !important;
+  border-top: 0 !important;
+}
+
+.hero.hero-calculator .hero-metrics li,
+.hero.hero-mobile-factory .hero-metrics li,
+.hero.hero-partner .hero-metrics li {
+  display: grid !important;
+  grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr) !important;
+  align-items: start !important;
+  gap: 0.3rem 0.95rem !important;
+  padding: 0.55rem 0.7rem !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: none !important;
+}
+
+.hero.hero-calculator .hero-copy .hero-metrics strong,
+.hero.hero-mobile-factory .hero-copy .hero-metrics strong,
+.hero.hero-partner .hero-copy .hero-metrics strong {
+  margin: 0 !important;
+  font-size: 0.84rem !important;
+}
+
+.hero.hero-calculator .hero-copy .hero-metrics span,
+.hero.hero-mobile-factory .hero-copy .hero-metrics span,
+.hero.hero-partner .hero-copy .hero-metrics span {
+  color: rgba(255, 255, 255, 0.74) !important;
+  font-size: 0.84rem !important;
+  line-height: 1.34 !important;
+  text-align: left !important;
+}
+
+.hero.hero-calculator .hero-shot img,
+.hero.hero-mobile-factory .hero-shot img,
+.hero.hero-partner .hero-shot img {
+  min-height: calc(100svh - var(--header-height) - 2.35rem) !important;
+}
+
+.hero.hero-calculator .hero-shot figcaption,
+.hero.hero-mobile-factory .hero-shot figcaption,
+.hero.hero-partner .hero-shot figcaption {
+  padding: 0.85rem 1rem 0.95rem !important;
+}
+
+.hero.hero-calculator .hero-shot figcaption strong,
+.hero.hero-mobile-factory .hero-shot figcaption strong,
+.hero.hero-partner .hero-shot figcaption strong {
+  font-size: 0.88rem !important;
+  line-height: 1.38 !important;
+}
+
+.hero.hero-calculator .hero-signal article,
+.hero.hero-mobile-factory .hero-signal article,
+.hero.hero-partner .hero-signal article {
+  padding: 0.72rem 0.9rem 0.76rem !important;
+}
+
+.hero.hero-calculator .hero-signal strong,
+.hero.hero-mobile-factory .hero-signal strong,
+.hero.hero-partner .hero-signal strong {
+  font-size: 0.84rem !important;
+  line-height: 1.34 !important;
+}
+
+@media (max-height: 860px) and (min-width: 901px) {
+  .hero.hero-calculator h1,
+  .hero.hero-mobile-factory h1,
+  .hero.hero-partner h1 {
+    font-size: clamp(1.7rem, 2.6vw, 3.05rem) !important;
+    max-width: 11.2ch !important;
+  }
+
+  .hero.hero-calculator .hero-copy,
+  .hero.hero-mobile-factory .hero-copy,
+  .hero.hero-partner .hero-copy {
+    padding: 0.92rem 0.95rem 0.98rem !important;
+  }
+
+  .hero.hero-calculator .hero-text,
+  .hero.hero-mobile-factory .hero-text,
+  .hero.hero-partner .hero-text {
+    font-size: 0.85rem !important;
+    line-height: 1.36 !important;
+  }
+
+  .hero.hero-calculator .hero-metrics li,
+  .hero.hero-mobile-factory .hero-metrics li,
+  .hero.hero-partner .hero-metrics li {
+    padding: 0.46rem 0.58rem !important;
+    grid-template-columns: minmax(0, 7.8rem) minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero.hero-calculator h1,
+  .hero.hero-mobile-factory h1,
+  .hero.hero-partner h1 {
+    max-width: 10.5ch !important;
+    font-size: clamp(1.95rem, 7.6vw, 3.3rem) !important;
+  }
+
+  .hero.hero-calculator .hero-metrics li,
+  .hero.hero-mobile-factory .hero-metrics li,
+  .hero.hero-partner .hero-metrics li {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* Homepage hero compact fit */
 
 .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner),

@@ -20,6 +20,7 @@ const videoStories = Array.from(document.querySelectorAll("[data-video-story]"))
   media: stage.querySelector("video")
 }));
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const mobileWidthQuery = window.matchMedia("(max-width: 900px)");
 
 if (yearNode) {
   yearNode.textContent = new Date().getFullYear();
@@ -40,6 +41,35 @@ if (menuToggle && siteNav && siteNavShell) {
 }
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+const shouldUseStaticMotionFallback = () => reducedMotionQuery.matches && !mobileWidthQuery.matches;
+
+function playVideoStories() {
+  videoStories.forEach(({ media }) => {
+    if (!media || typeof media.play !== "function") {
+      return;
+    }
+
+    media.muted = true;
+    media.defaultMuted = true;
+    media.autoplay = true;
+    media.playsInline = true;
+    media.setAttribute("muted", "");
+    media.setAttribute("autoplay", "");
+    media.setAttribute("playsinline", "");
+
+    const tryPlay = () => {
+      media.play().catch(() => {});
+    };
+
+    if (media.readyState >= 2) {
+      tryPlay();
+    } else {
+      media.addEventListener("loadedmetadata", tryPlay, { once: true });
+      media.addEventListener("canplay", tryPlay, { once: true });
+    }
+  });
+}
 
 function buildKaraokeHeading(node) {
   if (!node || node.dataset.karaokeReady === "true") {
@@ -112,6 +142,8 @@ function getEntryProgress(rect, startRatio = 0.96, travelRatio = 0.58) {
 }
 
 function updateScrollMotion() {
+  const reducedMobileMotion = reducedMotionQuery.matches && mobileWidthQuery.matches;
+
   sectionNodes.forEach((section, index) => {
     const progress = index === 0 ? 1 : getEntryProgress(section.getBoundingClientRect(), 1.02, 0.72);
     section.style.setProperty("--section-progress", progress.toFixed(3));
@@ -126,6 +158,11 @@ function updateScrollMotion() {
   });
 
   parallaxMedia.forEach((image) => {
+    if (reducedMobileMotion) {
+      image.style.setProperty("--media-shift", "0px");
+      return;
+    }
+
     const frame = image.closest("figure, article, div");
 
     if (!frame) {
@@ -140,6 +177,11 @@ function updateScrollMotion() {
   });
 
   karaokeTargets.forEach(({ node, chars }) => {
+    if (reducedMotionQuery.matches) {
+      chars.forEach((char) => char.classList.add("is-active"));
+      return;
+    }
+
     const progress = firstSection && firstSection.contains(node)
       ? 1
       : getEntryProgress(node.getBoundingClientRect(), 0.9, 0.48);
@@ -201,7 +243,7 @@ function resetMotionState() {
     story.cards.forEach((card, index) => {
       card.style.setProperty("--card-offset", "0");
       card.style.setProperty("--card-distance", "0");
-      card.style.opacity = index === 0 ? "1" : "0";
+      card.style.opacity = reducedMotionQuery.matches ? "1" : index === 0 ? "1" : "0";
       card.classList.toggle("is-current", index === 0);
     });
   });
@@ -210,7 +252,7 @@ function resetMotionState() {
 let frameId = 0;
 
 function requestMotionFrame() {
-  if (frameId || reducedMotionQuery.matches) {
+  if (frameId || shouldUseStaticMotionFallback()) {
     return;
   }
 
@@ -221,7 +263,7 @@ function requestMotionFrame() {
 }
 
 function handleMotionPreferenceChange() {
-  if (reducedMotionQuery.matches) {
+  if (shouldUseStaticMotionFallback()) {
     if (frameId) {
       window.cancelAnimationFrame(frameId);
       frameId = 0;
@@ -231,24 +273,27 @@ function handleMotionPreferenceChange() {
     return;
   }
 
+  playVideoStories();
   requestMotionFrame();
 }
 
-if (reducedMotionQuery.matches) {
+playVideoStories();
+
+if (shouldUseStaticMotionFallback()) {
   resetMotionState();
 } else {
-  videoStories.forEach(({ media }) => {
-    if (media && typeof media.play === "function") {
-      media.play().catch(() => {});
-    }
-  });
-
   updateScrollMotion();
   window.addEventListener("scroll", requestMotionFrame, { passive: true });
   window.addEventListener("resize", requestMotionFrame);
   window.addEventListener("load", requestMotionFrame);
   window.addEventListener("hashchange", requestMotionFrame);
   window.addEventListener("pageshow", requestMotionFrame);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+      playVideoStories();
+      requestMotionFrame();
+    }
+  });
   window.setTimeout(requestMotionFrame, 120);
 
   if (document.fonts && typeof document.fonts.ready?.then === "function") {

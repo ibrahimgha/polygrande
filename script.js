@@ -7,6 +7,7 @@ const navLinks = document.querySelectorAll(".masthead-nav a, .masthead-cta");
 const yearNode = document.querySelector("#year");
 const revealNodes = Array.from(document.querySelectorAll(".reveal"));
 const sectionNodes = Array.from(document.querySelectorAll("main > section"));
+const firstSection = sectionNodes[0] ?? null;
 const parallaxMedia = Array.from(
   document.querySelectorAll(
     ".hero-shot img, .ribbon-card img, .photo-card img, .standard-photo img, .mobile-factory-image img, .mobile-factory-poster img, .partner-image img, .partner-poster img"
@@ -111,13 +112,15 @@ function getEntryProgress(rect, startRatio = 0.96, travelRatio = 0.58) {
 }
 
 function updateScrollMotion() {
-  sectionNodes.forEach((section) => {
-    const progress = getEntryProgress(section.getBoundingClientRect(), 1.02, 0.72);
+  sectionNodes.forEach((section, index) => {
+    const progress = index === 0 ? 1 : getEntryProgress(section.getBoundingClientRect(), 1.02, 0.72);
     section.style.setProperty("--section-progress", progress.toFixed(3));
   });
 
   revealNodes.forEach((node) => {
-    const progress = getEntryProgress(node.getBoundingClientRect(), 0.98, 0.54);
+    const progress = firstSection && firstSection.contains(node)
+      ? 1
+      : getEntryProgress(node.getBoundingClientRect(), 0.98, 0.54);
     node.style.setProperty("--reveal-progress", progress.toFixed(3));
     node.classList.toggle("is-visible", progress > 0.08);
   });
@@ -137,7 +140,9 @@ function updateScrollMotion() {
   });
 
   karaokeTargets.forEach(({ node, chars }) => {
-    const progress = getEntryProgress(node.getBoundingClientRect(), 0.9, 0.48);
+    const progress = firstSection && firstSection.contains(node)
+      ? 1
+      : getEntryProgress(node.getBoundingClientRect(), 0.9, 0.48);
     const activeChars = Math.round(progress * chars.length);
 
     chars.forEach((char, index) => {

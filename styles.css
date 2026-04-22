@@ -4456,6 +4456,367 @@ main {
   display: none;
 }
 
+/* Calculator finish pass */
+
+.hero-calculator .hero-copy .eyebrow {
+  color: rgba(255, 255, 255, 0.64) !important;
+}
+
+.hero-calculator h1,
+.hero-calculator h1.scroll-karaoke,
+.hero-calculator h1.scroll-karaoke .karaoke-char,
+.hero-calculator h1.scroll-karaoke .karaoke-char.is-active {
+  color: #ffffff !important;
+}
+
+.hero-calculator .hero-text {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+.hero-calculator .button-secondary {
+  color: rgba(255, 255, 255, 0.92) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.24) !important;
+}
+
+.calculator-shell .section-heading h2,
+.calculator-shell .section-heading h2.scroll-karaoke,
+.calculator-shell .section-heading h2.scroll-karaoke .karaoke-char.is-active {
+  color: #ffffff !important;
+}
+
+.calculator-shell .section-heading h2.scroll-karaoke .karaoke-char {
+  color: rgba(255, 255, 255, 0.42) !important;
+}
+
+.calculator-shell .section-heading p:not(.eyebrow) {
+  color: rgba(255, 255, 255, 0.74) !important;
+}
+
+.calculator-panel,
+.result-panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.06)) !important;
+}
+
+.mode-toggle {
+  color: rgba(255, 255, 255, 0.74) !important;
+}
+
+.mode-toggle.is-active {
+  color: var(--blue-deep) !important;
+}
+
+.form-field > span {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.field-with-unit small {
+  color: rgba(255, 255, 255, 0.82) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.calculator-disclaimer,
+.result-copy {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+.result-warning,
+.result-breakdown strong,
+.formula-card code {
+  color: #ffffff !important;
+}
+
+/* Final calculator contrast overrides */
+
+.hero-calculator .hero-copy .eyebrow {
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.hero-calculator h1,
+.hero-calculator h1.scroll-karaoke {
+  color: #ffffff;
+}
+
+.hero-calculator h1.scroll-karaoke .karaoke-char,
+.hero-calculator h1.scroll-karaoke .karaoke-char.is-active {
+  color: #ffffff !important;
+}
+
+.hero-calculator .hero-text {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.hero-calculator .button-secondary {
+  color: rgba(255, 255, 255, 0.92);
+  border-bottom-color: rgba(255, 255, 255, 0.24);
+}
+
+.calculator-shell .section-heading h2,
+.calculator-shell .section-heading h2.scroll-karaoke {
+  color: #ffffff;
+}
+
+.calculator-shell .section-heading .scroll-karaoke .karaoke-char {
+  color: rgba(255, 255, 255, 0.42) !important;
+}
+
+.calculator-shell .section-heading .scroll-karaoke .karaoke-char.is-active {
+  color: #ffffff !important;
+}
+
+.calculator-shell .section-heading p:not(.eyebrow) {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.calculator-panel,
+.result-panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.06));
+}
+
+.mode-toggle {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.mode-toggle.is-active {
+  color: var(--blue-deep);
+}
+
+.form-field > span {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.field-with-unit small {
+  color: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.calculator-disclaimer,
+.result-copy {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.result-warning,
+.result-breakdown strong,
+.formula-card code {
+  color: #ffffff;
+}
+
+/* Calculator dark-surface polish */
+
+.hero-calculator .hero-copy .eyebrow {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.hero-calculator h1 {
+  color: #ffffff;
+}
+
+.hero-calculator h1.scroll-karaoke {
+  --karaoke-active: #ffffff;
+  --karaoke-idle: rgba(255, 255, 255, 0.22);
+}
+
+.hero-calculator .scroll-karaoke .karaoke-char {
+  color: rgba(255, 255, 255, 0.22);
+}
+
+.hero-calculator .scroll-karaoke .karaoke-char.is-active {
+  color: #ffffff;
+}
+
+.hero-calculator .hero-text {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.hero-calculator .button-secondary {
+  color: rgba(255, 255, 255, 0.92);
+  border-bottom-color: rgba(255, 255, 255, 0.24);
+}
+
+.calculator-shell .section-heading {
+  max-width: 70rem;
+  margin-bottom: 2.4rem;
+}
+
+.calculator-shell .section-heading h2 {
+  max-width: 11ch;
+  color: #ffffff;
+}
+
+.calculator-shell .section-heading .scroll-karaoke {
+  --karaoke-active: #ffffff;
+  --karaoke-idle: rgba(255, 255, 255, 0.22);
+}
+
+.calculator-shell .section-heading .scroll-karaoke .karaoke-char {
+  color: rgba(255, 255, 255, 0.22);
+}
+
+.calculator-shell .section-heading .scroll-karaoke .karaoke-char.is-active {
+  color: #ffffff;
+}
+
+.calculator-shell .section-heading p:not(.eyebrow) {
+  max-width: 48rem;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.calculator-shell .section-heading .eyebrow {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.calculator-layout {
+  overflow: hidden;
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 26px 80px rgba(3, 12, 28, 0.22);
+}
+
+.calculator-panel,
+.result-panel {
+  padding: clamp(1.55rem, 2.4vw, 2.2rem);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.05));
+}
+
+.result-panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.065));
+}
+
+.calculator-mode {
+  gap: 0.7rem;
+  padding-bottom: 0;
+  margin-bottom: 1.6rem;
+  border-bottom: 0;
+}
+
+.mode-toggle {
+  min-height: 3.1rem;
+  padding: 0.82rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.mode-toggle:hover,
+.mode-toggle:focus-visible {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.mode-toggle.is-active {
+  color: var(--blue-deep);
+  border-color: #ffffff;
+  background: #ffffff;
+}
+
+.form-field > span {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.form-field input,
+.form-field select,
+.field-with-unit {
+  min-height: 3.45rem;
+  background: rgba(255, 255, 255, 0.095);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+.form-field input::placeholder {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 0;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.field-with-unit {
+  gap: 0;
+  padding-right: 0;
+}
+
+.field-with-unit input {
+  padding: 0 0.9rem;
+}
+
+.field-with-unit small {
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  min-width: 5.15rem;
+  padding: 0 0.95rem;
+  background: rgba(255, 255, 255, 0.11);
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.calculator-disclaimer,
+.result-copy {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.result-warning {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.result-panel h3 {
+  max-width: 12ch;
+  font-size: clamp(1.5rem, 2vw, 1.9rem);
+  line-height: 1.06;
+}
+
+.result-value {
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.result-value span {
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.04em;
+}
+
+.result-breakdown {
+  margin-top: 1.7rem;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.result-breakdown div,
+.formula-card {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.result-breakdown span,
+.formula-card p {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.result-breakdown strong,
+.formula-card code {
+  color: #ffffff;
+}
+
+@media (max-width: 980px) {
+  .calculator-shell .section-heading h2 {
+    max-width: 12ch;
+  }
+
+  .calculator-panel,
+  .result-panel {
+    padding: 1.35rem 1.1rem;
+  }
+
+  .calculator-mode {
+    gap: 0.6rem;
+  }
+}
+
 /* Landing screen refinement */
 :root {
   --header-height: 4.15rem;
@@ -4883,4 +5244,73 @@ main {
 
 .site-footer::after {
   display: none;
+}
+
+/* Final calculator contrast override at true file end */
+
+.hero-calculator .hero-copy .eyebrow {
+  color: rgba(255, 255, 255, 0.64) !important;
+}
+
+.hero-calculator h1,
+.hero-calculator h1.scroll-karaoke,
+.hero-calculator h1.scroll-karaoke .karaoke-char,
+.hero-calculator h1.scroll-karaoke .karaoke-char.is-active {
+  color: #ffffff !important;
+}
+
+.hero-calculator .hero-text {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+.hero-calculator .button-secondary {
+  color: rgba(255, 255, 255, 0.92) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.24) !important;
+}
+
+.calculator-shell .section-heading h2,
+.calculator-shell .section-heading h2.scroll-karaoke,
+.calculator-shell .section-heading h2.scroll-karaoke .karaoke-char.is-active {
+  color: #ffffff !important;
+}
+
+.calculator-shell .section-heading h2.scroll-karaoke .karaoke-char {
+  color: rgba(255, 255, 255, 0.42) !important;
+}
+
+.calculator-shell .section-heading p:not(.eyebrow) {
+  color: rgba(255, 255, 255, 0.74) !important;
+}
+
+.calculator-panel,
+.result-panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.06)) !important;
+}
+
+.mode-toggle {
+  color: rgba(255, 255, 255, 0.74) !important;
+}
+
+.mode-toggle.is-active {
+  color: var(--blue-deep) !important;
+}
+
+.form-field > span {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.field-with-unit small {
+  color: rgba(255, 255, 255, 0.82) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.calculator-disclaimer,
+.result-copy {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+.result-warning,
+.result-breakdown strong,
+.formula-card code {
+  color: #ffffff !important;
 }

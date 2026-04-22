@@ -1,4 +1,8 @@
 @media (max-width: 900px) {
+  #video-story {
+    background: #0a1f3e !important;
+  }
+
   #top.hero {
     grid-template-columns: 1fr !important;
     min-height: auto !important;
@@ -74,17 +78,21 @@
   }
 
   #video-story .video-story-scroll {
-    min-height: calc((var(--story-steps, 6) * 88svh) + 100svh) !important;
+    min-height: calc((var(--story-steps, 6) * 88svh) + var(--app-height, 100dvh)) !important;
+    background: #0a1f3e !important;
   }
 
   #video-story .video-story-stage {
     top: var(--header-height) !important;
-    min-height: calc(100svh - var(--header-height)) !important;
+    min-height: calc(var(--app-height, 100dvh) - var(--header-height)) !important;
+    height: calc(var(--app-height, 100dvh) - var(--header-height)) !important;
+    transform: translateZ(0);
+    will-change: transform;
   }
 
   #video-story .video-story-grid,
   #video-story .video-story-stack {
-    min-height: calc(100svh - var(--header-height)) !important;
+    min-height: calc(var(--app-height, 100dvh) - var(--header-height)) !important;
   }
 
   #video-story .video-story-grid {
@@ -94,6 +102,13 @@
   #video-story .video-story-media {
     transform: scale(1.22) !important;
     object-position: center center !important;
+    backface-visibility: hidden;
+    transform-origin: center center;
+    will-change: transform;
+  }
+
+  #video-story .video-story-shade {
+    backface-visibility: hidden;
   }
 
   #video-story .video-story-card {
@@ -101,7 +116,12 @@
     left: 50% !important;
     width: min(21rem, calc(100vw - 1.5rem)) !important;
     padding: 1rem 1rem 1.02rem !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: none !important;
+    box-shadow: 0 16px 38px rgba(7, 21, 41, 0.18) !important;
     transform: translate3d(-50%, calc(-50% + (var(--card-offset, 0) * 23rem)), 0) scale(calc(1 - (var(--card-distance, 0) * 0.06))) !important;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
   }
 
   #video-story .video-story-card h3 {
@@ -114,7 +134,7 @@
   }
 
   .js #video-story .video-story-card {
-    transition: opacity 180ms ease, transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease !important;
+    transition: opacity 150ms linear, transform 150ms linear !important;
   }
 
   .js main > section {
@@ -136,13 +156,14 @@
 
 @media (max-width: 900px) and (prefers-reduced-motion: reduce) {
   #video-story .video-story-scroll {
-    min-height: calc((var(--story-steps, 6) * 86svh) + 100svh) !important;
+    min-height: calc((var(--story-steps, 6) * 86svh) + var(--app-height, 100dvh)) !important;
   }
 
   #video-story .video-story-stage {
     position: sticky !important;
     top: var(--header-height) !important;
-    min-height: calc(100svh - var(--header-height)) !important;
+    min-height: calc(var(--app-height, 100dvh) - var(--header-height)) !important;
+    height: calc(var(--app-height, 100dvh) - var(--header-height)) !important;
   }
 
   #video-story .video-story-grid {

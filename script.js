@@ -44,6 +44,16 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 const shouldUseStaticMotionFallback = () => reducedMotionQuery.matches && !mobileWidthQuery.matches;
 
+function setViewportHeightVar() {
+  const viewportHeight = window.visualViewport?.height || window.innerHeight || 0;
+
+  if (!viewportHeight) {
+    return;
+  }
+
+  document.documentElement.style.setProperty("--app-height", `${viewportHeight}px`);
+}
+
 function playVideoStories() {
   videoStories.forEach(({ media }) => {
     if (!media || typeof media.play !== "function") {
@@ -57,6 +67,7 @@ function playVideoStories() {
     media.setAttribute("muted", "");
     media.setAttribute("autoplay", "");
     media.setAttribute("playsinline", "");
+    media.setAttribute("webkit-playsinline", "");
 
     const tryPlay = () => {
       media.play().catch(() => {});
@@ -69,6 +80,25 @@ function playVideoStories() {
       media.addEventListener("canplay", tryPlay, { once: true });
     }
   });
+}
+
+let videoWakeBound = false;
+
+function bindVideoWakeEvents() {
+  if (videoWakeBound) {
+    return;
+  }
+
+  const wakeVideoPlayback = () => {
+    playVideoStories();
+    requestMotionFrame();
+  };
+
+  ["touchstart", "pointerdown", "click"].forEach((eventName) => {
+    document.addEventListener(eventName, wakeVideoPlayback, { passive: true });
+  });
+
+  videoWakeBound = true;
 }
 
 function buildKaraokeHeading(node) {
@@ -143,6 +173,7 @@ function getEntryProgress(rect, startRatio = 0.96, travelRatio = 0.58) {
 
 function updateScrollMotion() {
   const reducedMobileMotion = reducedMotionQuery.matches && mobileWidthQuery.matches;
+  const viewportHeight = window.visualViewport?.height || window.innerHeight || 1;
 
   sectionNodes.forEach((section, index) => {
     const progress = index === 0 ? 1 : getEntryProgress(section.getBoundingClientRect(), 1.02, 0.72);
@@ -170,7 +201,6 @@ function updateScrollMotion() {
     }
 
     const rect = frame.getBoundingClientRect();
-    const viewportHeight = window.innerHeight || 1;
     const offset = ((rect.top + rect.height / 2) - viewportHeight / 2) / viewportHeight;
     const shift = clamp(offset * -24, -18, 18);
     image.style.setProperty("--media-shift", `${shift.toFixed(2)}px`);
@@ -198,7 +228,6 @@ function updateScrollMotion() {
     }
 
     const rect = story.scrollArea.getBoundingClientRect();
-    const viewportHeight = window.innerHeight || 1;
     const totalScroll = Math.max(rect.height - viewportHeight, 1);
     const scrolled = clamp(-rect.top, 0, totalScroll);
     const progress = scrolled / totalScroll;
@@ -278,13 +307,18 @@ function handleMotionPreferenceChange() {
 }
 
 playVideoStories();
+bindVideoWakeEvents();
+setViewportHeightVar();
 
 if (shouldUseStaticMotionFallback()) {
   resetMotionState();
 } else {
   updateScrollMotion();
   window.addEventListener("scroll", requestMotionFrame, { passive: true });
-  window.addEventListener("resize", requestMotionFrame);
+  window.addEventListener("resize", () => {
+    setViewportHeightVar();
+    requestMotionFrame();
+  });
   window.addEventListener("load", requestMotionFrame);
   window.addEventListener("hashchange", requestMotionFrame);
   window.addEventListener("pageshow", requestMotionFrame);
@@ -295,10 +329,23 @@ if (shouldUseStaticMotionFallback()) {
     }
   });
   window.setTimeout(requestMotionFrame, 120);
+  window.setTimeout(playVideoStories, 320);
 
   if (document.fonts && typeof document.fonts.ready?.then === "function") {
     document.fonts.ready.then(requestMotionFrame).catch(() => {});
   }
+}
+
+if (window.visualViewport) {
+  window.visualViewport.addEventListener("resize", () => {
+    setViewportHeightVar();
+    requestMotionFrame();
+  });
+
+  window.visualViewport.addEventListener("scroll", () => {
+    setViewportHeightVar();
+    requestMotionFrame();
+  });
 }
 
 if (typeof reducedMotionQuery.addEventListener === "function") {

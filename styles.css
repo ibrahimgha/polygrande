@@ -4716,3 +4716,34 @@ main {
     grid-template-columns: 1fr;
   }
 }
+
+/* Simple fixed-style footer parallax */
+main {
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
+}
+
+.site-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+}
+
+.site-footer.reveal-footer,
+.js .site-footer.reveal-footer,
+.js .site-footer.reveal-footer.is-visible {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none;
+  will-change: auto;
+}
+
+.site-footer::before {
+  animation: none;
+  opacity: 1;
+}
+
+.site-footer::after {
+  display: none;
+}

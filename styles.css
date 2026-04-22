@@ -4525,6 +4525,17 @@ main {
   color: #ffffff !important;
 }
 
+.cta {
+  margin-bottom: 0 !important;
+}
+
+.hero-visual,
+.mobile-factory-band,
+.partner-band,
+.calculator-notes {
+  background: #ffffff !important;
+}
+
 /* Final calculator contrast overrides */
 
 .hero-calculator .hero-copy .eyebrow {

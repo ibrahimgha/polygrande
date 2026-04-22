@@ -4456,6 +4456,143 @@ main {
   display: none;
 }
 
+/* Landing screen refinement */
+:root {
+  --header-height: 4.15rem;
+}
+
+main {
+  padding-top: var(--header-height);
+}
+
+.masthead {
+  min-height: var(--header-height);
+}
+
+.hero {
+  min-height: calc(100svh - var(--header-height));
+  border-top: 0;
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) {
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy {
+  justify-content: center;
+  padding: clamp(1.8rem, 3.8vw, 3rem) clamp(1rem, 2.8vw, 2.6rem) clamp(1.55rem, 3vw, 2.35rem);
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy .eyebrow {
+  margin-bottom: 0.8rem;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) h1 {
+  max-width: 8.4ch;
+  font-size: clamp(2.55rem, 4.5vw, 5.1rem);
+  line-height: 0.9;
+  letter-spacing: -0.065em;
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .scroll-karaoke .karaoke-char,
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .scroll-karaoke .karaoke-char.is-active {
+  color: #ffffff;
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-text {
+  max-width: 32rem;
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(0.98rem, 1.02vw, 1.04rem);
+  line-height: 1.68;
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-actions {
+  margin-top: 1.35rem;
+  gap: 0.8rem 1.35rem;
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .button-primary {
+  padding-inline: 1.1rem;
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .button-secondary {
+  color: rgba(255, 255, 255, 0.94);
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-metrics {
+  margin-top: 1.5rem;
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-metrics li {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.12);
+  padding: 0.78rem 0;
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy .hero-metrics strong {
+  color: #ffffff;
+  font-size: 0.96rem;
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy .hero-metrics span {
+  color: rgba(255, 255, 255, 0.76);
+  line-height: 1.55;
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-shot img {
+  min-height: calc(100svh - 8.3rem);
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-shot figcaption span {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-shot figcaption strong {
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-signal article {
+  padding: 1rem 1.25rem 1.05rem;
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-signal p {
+  margin-bottom: 0.38rem;
+}
+
+.hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-signal strong {
+  font-size: 0.92rem;
+  line-height: 1.48;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --header-height: 3.9rem;
+  }
+
+  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) {
+    grid-template-columns: 1fr;
+  }
+
+  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-copy {
+    justify-content: flex-end;
+    padding: 1.7rem 0.95rem 1.55rem;
+  }
+
+  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) h1 {
+    max-width: 9.2ch;
+    font-size: clamp(2.35rem, 10vw, 4.1rem);
+  }
+
+  .hero:not(.hero-calculator):not(.hero-mobile-factory):not(.hero-partner) .hero-shot img {
+    min-height: 22rem;
+  }
+}
+
 .site-footer-shell,
 .site-footer-bottom {
   width: min(100%, calc(100vw - (2 * var(--content-edge))));

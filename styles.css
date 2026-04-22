@@ -13,8 +13,8 @@
   --text: #173a61;
   --muted: #5f7898;
   --shadow: 0 28px 68px rgba(31, 95, 168, 0.1);
-  --radius: 28px;
-  --radius-sm: 18px;
+  --radius: 0;
+  --radius-sm: 0;
   --content-width: calc(100vw - (2 * var(--content-edge)));
   --section-shift: 88px;
   --reveal-shift: 56px;
@@ -3310,4 +3310,8 @@ main > section,
     color: var(--karaoke-active);
     transition: none;
   }
+}
+
+:where(*, *::before, *::after) {
+  border-radius: 0 !important;
 }

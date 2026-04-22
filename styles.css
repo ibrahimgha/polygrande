@@ -4536,6 +4536,87 @@ main {
   background: #ffffff !important;
 }
 
+/* Shared top-of-page cleanup */
+
+main {
+  padding-top: 0 !important;
+}
+
+.hero {
+  min-height: 100svh !important;
+  border-top: 0 !important;
+}
+
+.hero-copy,
+.hero-visual {
+  min-height: 100svh !important;
+}
+
+/* Mobile factory hero refinement */
+
+.hero-mobile-factory {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) !important;
+  background: #ffffff !important;
+}
+
+.hero-mobile-factory .hero-copy {
+  justify-content: center !important;
+  padding: clamp(6rem, 10vw, 8rem) clamp(1.25rem, 4vw, 4rem) clamp(2rem, 5vw, 3.2rem) !important;
+}
+
+.hero-mobile-factory h1 {
+  max-width: 8.2ch !important;
+  font-size: clamp(2.9rem, 5.3vw, 5.5rem) !important;
+}
+
+.hero-mobile-factory .hero-text {
+  max-width: 34rem !important;
+  color: rgba(255, 255, 255, 0.74) !important;
+}
+
+.hero-mobile-factory .hero-metrics {
+  margin-top: 1.8rem !important;
+}
+
+.hero-mobile-factory .hero-shot img {
+  min-height: 100svh !important;
+  object-position: center 38%;
+}
+
+.hero-mobile-factory .hero-signal article {
+  background: rgba(255, 255, 255, 0.96) !important;
+}
+
+.hero-mobile-factory .hero-signal p {
+  color: var(--blue) !important;
+}
+
+.hero-mobile-factory .hero-signal strong {
+  color: var(--text) !important;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .hero-copy,
+  .hero-visual {
+    min-height: auto !important;
+  }
+
+  .hero-mobile-factory {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-mobile-factory .hero-copy {
+    justify-content: flex-end !important;
+    padding: 5.7rem 0.95rem 1.7rem !important;
+  }
+
+  .hero-mobile-factory .hero-shot img {
+    min-height: 24rem !important;
+    object-position: center 32%;
+  }
+}
+
 /* Final calculator contrast overrides */
 
 .hero-calculator .hero-copy .eyebrow {

@@ -4848,6 +4848,86 @@ main {
   }
 }
 
+/* True final footer layout override */
+.site-footer {
+  width: 100vw !important;
+  margin: 0 calc(50% - 50vw) !important;
+  padding: clamp(3.2rem, 5vw, 4.4rem) var(--content-edge) 1.45rem !important;
+  overflow: hidden !important;
+}
+
+.site-footer-shell,
+.site-footer-bottom {
+  width: min(100%, 1760px) !important;
+  margin-inline: auto !important;
+}
+
+.site-footer-shell {
+  display: grid !important;
+  grid-template-columns: minmax(17rem, 1.15fr) minmax(8rem, 0.55fr) minmax(10rem, 0.65fr) minmax(24rem, 1.35fr) !important;
+  align-items: start !important;
+  gap: clamp(2rem, 4vw, 4.5rem) !important;
+}
+
+.site-footer-brand,
+.site-footer-column,
+.site-footer-contact {
+  min-width: 0 !important;
+}
+
+.site-footer-contact p:not(.site-footer-heading) {
+  max-width: 48ch;
+}
+
+.site-footer-button {
+  border-radius: 0 !important;
+}
+
+.site-footer-bottom {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: start !important;
+  gap: 1.5rem 3rem !important;
+  margin-top: clamp(2.1rem, 4vw, 3.4rem) !important;
+  padding-top: 1.25rem !important;
+  clear: both !important;
+}
+
+.site-footer-bottom p {
+  max-width: 58rem;
+}
+
+.site-footer-bottom p:last-child {
+  justify-self: end;
+  text-align: right;
+}
+
+@media (max-width: 1120px) {
+  .site-footer-shell {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .site-footer-bottom {
+    grid-template-columns: 1fr !important;
+  }
+
+  .site-footer-bottom p:last-child {
+    justify-self: start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-footer {
+    padding-top: 2.4rem !important;
+  }
+
+  .site-footer-shell {
+    grid-template-columns: 1fr !important;
+    gap: 1.7rem !important;
+  }
+}
+
 /* Final inner-page hero compression */
 
 .hero.hero-calculator h1,

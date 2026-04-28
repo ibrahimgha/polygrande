@@ -350,7 +350,9 @@ function updateScrollMotion() {
     story.cards.forEach((card, index) => {
       const offset = index - motion;
       const distance = Math.min(Math.abs(offset), 1.8);
-      const opacity = clamp(1 - (distance * 1.35), 0, 1);
+      const opacity = card.classList.contains("video-story-title-card")
+        ? clamp(1 - (distance * 1.85), 0, 1)
+        : clamp(1 - (distance * 1.35), 0, 1);
 
       card.style.setProperty("--card-offset", offset.toFixed(3));
       card.style.setProperty("--card-distance", distance.toFixed(3));
@@ -382,9 +384,11 @@ function resetMotionState() {
     story.stage.style.setProperty("--story-progress", "1");
 
     story.cards.forEach((card, index) => {
+      const isTitleCard = card.classList.contains("video-story-title-card");
+
       card.style.setProperty("--card-offset", "0");
       card.style.setProperty("--card-distance", "0");
-      card.style.opacity = reducedMotionQuery.matches ? "1" : index === 0 ? "1" : "0";
+      card.style.opacity = reducedMotionQuery.matches && !isTitleCard ? "1" : index === 0 ? "1" : "0";
       card.classList.toggle("is-current", index === 0);
     });
   });

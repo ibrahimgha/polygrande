@@ -1,0 +1,86 @@
+#video-story .video-story-shade {
+  background:
+    linear-gradient(180deg, rgba(2, 10, 22, 0.62), rgba(2, 10, 22, 0.72)),
+    linear-gradient(90deg, rgba(2, 10, 22, 0.72), rgba(2, 10, 22, 0.38) 52%, rgba(2, 10, 22, 0.76));
+}
+
+#video-story .video-story-grid {
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.4rem, 5vw, 4.5rem);
+}
+
+#video-story .video-story-stack {
+  display: grid;
+  place-items: center;
+}
+
+#video-story .video-story-title-card {
+  width: min(1180px, calc(100vw - 2rem));
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  text-align: center;
+  transform: translate3d(-50%, calc(-50% + (var(--card-offset, 0) * 1.6rem)), 0) scale(calc(0.97 + ((1 - var(--card-distance, 1)) * 0.03)));
+  transition: opacity 120ms linear, transform 120ms linear;
+}
+
+#video-story .video-story-title-card.is-current {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+#video-story .video-story-title-card h3 {
+  margin: 0 auto;
+  max-width: 12ch;
+  color: #ffffff;
+  font-size: 8.8rem;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-wrap: balance;
+  text-shadow: 0 22px 64px rgba(0, 0, 0, 0.42);
+}
+
+#video-story .video-story-step,
+#video-story .video-story-card-head,
+#video-story .video-story-icon,
+#video-story .video-story-title-card p {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  #video-story .video-story-shade {
+    background:
+      linear-gradient(180deg, rgba(2, 10, 22, 0.62), rgba(2, 10, 22, 0.74)),
+      linear-gradient(90deg, rgba(2, 10, 22, 0.7), rgba(2, 10, 22, 0.46));
+  }
+
+  #video-story .video-story-title-card {
+    width: min(24rem, calc(100vw - 1.5rem)) !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    transform: translate3d(-50%, calc(-50% + (var(--card-offset, 0) * 1.1rem)), 0) scale(calc(0.98 + ((1 - var(--card-distance, 1)) * 0.02))) !important;
+  }
+
+  #video-story .video-story-title-card h3 {
+    max-width: 11ch;
+    font-size: 4.35rem !important;
+    line-height: 0.92;
+  }
+}
+
+@media (max-width: 480px) {
+  #video-story .video-story-title-card {
+    width: calc(100vw - 1.35rem) !important;
+  }
+
+  #video-story .video-story-title-card h3 {
+    font-size: 3.7rem !important;
+  }
+}

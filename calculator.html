@@ -48,94 +48,67 @@
       <section class="hero hero-calculator" id="top">
         <div class="hero-copy reveal">
           <h1>Pipeline depth calculator.</h1>
-          <p class="hero-text">
-            Based on the Egyptian Code of Practice (ECP 102/1) for water and drainage pipelines. Select your installation conditions to find either the maximum installation depth or the required pipe stiffness class.
-          </p>
+          <p class="hero-text">PolyGrande table lookup for buried structured wall HDPE pipe systems.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#calculator">Calculate</a>
-            <a class="button button-secondary" href="index.html">Back to PolyGrande</a>
+            <a class="button button-secondary" href="#diameter-reference">Diameter table</a>
           </div>
-          <ul class="hero-metrics" aria-label="Calculator features">
-            <li>
-              <strong>Mode 1</strong>
-              <span>Find the required SR class for a selected installation depth.</span>
-            </li>
-            <li>
-              <strong>Mode 2</strong>
-              <span>Find maximum depth for the selected pipe stiffness class.</span>
-            </li>
-            <li>
-              <strong>Table Logic</strong>
-              <span>Careful Execution applies when backfill stiffness >13 MPa with certified geotechnical supervision.</span>
-            </li>
-          </ul>
         </div>
 
         <div class="hero-visual reveal">
           <figure class="hero-shot">
             <img src="assets/images/media-lab-engineer.jpg" alt="Quality-control engineer reviewing test data beside a large pipe specimen in the laboratory." fetchpriority="high">
             <figcaption>
-              <span>Engineering Context</span>
-              <strong>Lab and testing visuals support the calculator workflow directly.</strong>
+              <span>Laboratory QA</span>
+              <strong>Ring-stiffness context for PolyGrande HDPE pipe systems.</strong>
             </figcaption>
           </figure>
-
-          <div class="hero-signal">
-            <article>
-              <p>Inputs</p>
-              <strong>Diameter, soil condition, installation case, trench width, and target cover or stiffness</strong>
-            </article>
-            <article>
-              <p>Outputs</p>
-              <strong>Required SR class guidance or maximum allowable cover from the shared charts</strong>
-            </article>
-          </div>
         </div>
       </section>
 
-      <section class="calculator-shell" id="calculator">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Interactive tool</p>
-          <h2>Select installation conditions and calculate the required pipe class.</h2>
-          <p>
-            Installation must follow the Egyptian Code of Practice for water and drainage pipelines, including compaction of backfill in layers. Results are recommendations and must be reviewed by the design consultant or contractor.
-          </p>
+      <section class="calculator-shell calculator-redesign" id="calculator">
+        <div class="calculator-title-row reveal">
+          <div>
+            <p class="eyebrow">Engineering Tool</p>
+            <h2>Depth / SR lookup.</h2>
+          </div>
+          <a class="button button-secondary" href="#diameter-reference">View diameter table</a>
         </div>
 
-        <div class="calculator-layout">
+        <div class="calculator-layout calculator-workbench">
           <section class="calculator-panel reveal">
             <div class="calculator-mode" role="tablist" aria-label="Calculation mode">
-              <button class="mode-toggle is-active" type="button" data-mode-toggle="stiffness" aria-selected="true">Find required SR class</button>
-              <button class="mode-toggle" type="button" data-mode-toggle="depth" aria-selected="false">Find max depth</button>
+              <button class="mode-toggle is-active" type="button" data-mode-toggle="stiffness" aria-selected="true">Required SR</button>
+              <button class="mode-toggle" type="button" data-mode-toggle="depth" aria-selected="false">Max depth</button>
             </div>
 
             <form class="calc-form" data-pipe-calculator>
               <div class="form-grid">
                 <label class="form-field">
-                  <span>Pipe diameter</span>
+                  <span>Internal diameter</span>
                   <select name="diameter" required>
-                    <option value="150">150 mm</option>
-                    <option value="250">250 mm</option>
-                    <option value="300">300 mm</option>
-                    <option value="350">350 mm</option>
-                    <option value="400">400 mm</option>
-                    <option value="500">500 mm</option>
-                    <option value="600" selected>600 mm</option>
-                    <option value="800">800 mm</option>
-                    <option value="1000">1000 mm</option>
-                    <option value="1200">1200 mm</option>
-                    <option value="1500">1500 mm</option>
+                    <option value="150">DN 150</option>
+                    <option value="250">DN 250</option>
+                    <option value="300">DN 300</option>
+                    <option value="350">DN 350</option>
+                    <option value="400">DN 400</option>
+                    <option value="500">DN 500</option>
+                    <option value="600" selected>DN 600</option>
+                    <option value="800">DN 800</option>
+                    <option value="1000">DN 1000</option>
+                    <option value="1200">DN 1200</option>
+                    <option value="1500">DN 1500</option>
                   </select>
                 </label>
 
                 <label class="form-field">
-                  <span>Soil / backfill type</span>
+                  <span>Backfill</span>
                   <select name="soilType" required>
-                    <option value="coarse-native">Sand or rock native soil</option>
-                    <option value="coarse-backfill" selected>Coarse grained backfill (fines &lt; 12%)</option>
-                    <option value="mixed-backfill">Mixed fine/coarse backfill (&lt; 25% fines)</option>
-                    <option value="fine-plastic">Fine grained medium plastic soil (LL &lt; 50)</option>
-                    <option value="clay-borrowed">Clay / borrowed material condition</option>
+                    <option value="coarse-native">Native sand / rock</option>
+                    <option value="coarse-backfill" selected>Coarse granular</option>
+                    <option value="mixed-backfill">Mixed granular</option>
+                    <option value="fine-plastic">Fine plastic</option>
+                    <option value="clay-borrowed">Borrowed clay</option>
                   </select>
                 </label>
 
@@ -148,18 +121,18 @@
                 </label>
 
                 <label class="form-field">
-                  <span>Execution type / installation case</span>
+                  <span>Installation case</span>
                   <select name="executionType" required>
                     <option value="caseA" selected>Case A</option>
                     <option value="caseB">Case B</option>
-                    <option value="borrowed">Borrowed Material</option>
+                    <option value="borrowed">Borrowed material</option>
                   </select>
                 </label>
               </div>
 
               <div class="mode-panel" data-mode-panel="stiffness">
                 <label class="form-field">
-                  <span>Soil cover height</span>
+                  <span>Cover height</span>
                   <div class="field-with-unit">
                     <input type="number" name="pipeDepth" min="0.3" step="0.1" value="2.4" required>
                     <small>m</small>
@@ -169,30 +142,29 @@
 
               <div class="mode-panel" data-mode-panel="depth" hidden>
                 <label class="form-field">
-                  <span>Target stiffness</span>
+                  <span>Pipe stiffness</span>
                   <div class="field-with-unit">
                     <input type="number" name="targetStiffness" min="8" max="31.5" step="0.1" value="16.0" required>
-                    <small>kN/m2</small>
+                    <small>kN/m&sup2;</small>
                   </div>
                 </label>
               </div>
 
               <div class="calculator-actions">
                 <button class="button button-primary" type="submit">Calculate</button>
-                <p class="calculator-disclaimer">Uses published SR 8 / 16 / 31.5 cover tables with interpolation between supported trench widths.</p>
               </div>
             </form>
           </section>
 
           <aside class="result-panel reveal">
-            <p class="eyebrow">Calculation result</p>
-            <h3 id="result-heading">Minimum Required Pipe Stiffness</h3>
+            <p class="eyebrow">Result</p>
+            <h3 id="result-heading">Required SR class</h3>
             <div class="result-value">
               <strong id="result-number">0.00</strong>
-              <span id="result-unit">kN/m2</span>
+              <span id="result-unit">kN/m&sup2;</span>
             </div>
             <p class="result-copy" id="result-copy">
-              Table-based output from the selected diameter, installation case, and trench-width band.
+              Select values and calculate.
             </p>
             <p class="result-warning" id="result-warning"></p>
 
@@ -202,72 +174,70 @@
                 <strong id="result-diameter">600 mm</strong>
               </div>
               <div>
-                <span>Installation column</span>
+                <span>Column</span>
                 <strong id="result-scenario">Case A / &le; 1.5D</strong>
               </div>
               <div>
-                <span>Width classification</span>
+                <span>Width</span>
                 <strong id="result-width-class">2.00D</strong>
               </div>
               <div>
-                <span>Published support</span>
+                <span>SR support</span>
                 <strong id="result-support-range">SR 8 - SR 31.5</strong>
               </div>
             </div>
 
-            <div class="formula-card">
-              <p>Lookup method</p>
-              <code id="result-formula">Result = published table lookup by diameter and case, with interpolation between 1.5D and 3.0D trench widths when needed.</code>
-            </div>
+            <code id="result-formula" hidden>Table lookup.</code>
           </aside>
         </div>
-      </section>
+        <section class="diameter-reference reveal" id="diameter-reference" aria-labelledby="diameter-reference-title">
+          <div class="diameter-reference-heading">
+            <div>
+              <p class="eyebrow">Diameter table</p>
+              <h2 id="diameter-reference-title">Pipe range dimensions and tolerances.</h2>
+            </div>
+            <span>DIN 16961-1&amp;2</span>
+          </div>
 
-      <section class="calculator-notes">
-        <article class="calculator-note reveal">
-          <p class="eyebrow">Engineering basis</p>
-          <h3>Egyptian Code based recommendation</h3>
-          <p class="note-copy">The calculator uses the shared maximum allowable soil cover tables and applies interpolation between published bounds.</p>
-        </article>
-        <article class="calculator-note reveal">
-          <p class="eyebrow">Interpolation rule</p>
-          <h3>Careful execution</h3>
-          <p class="note-copy">Careful Execution applies when backfill stiffness is greater than 13 MPa with certified geotechnical supervision.</p>
-        </article>
-      </section>
+          <div class="diameter-table-wrap">
+            <table class="diameter-table">
+              <thead>
+                <tr>
+                  <th>ID [mm]</th>
+                  <th>Lower [mm]</th>
+                  <th>Upper [mm]</th>
+                  <th>e<sub>5</sub> min [mm]</th>
+                  <th>DVS 2207</th>
+                  <th>Rubber seal</th>
+                  <th>Supply</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>DN 500</td><td>-13</td><td>+10</td><td>3.0</td><td><span class="dash-mark">&mdash;</span></td><td><span class="check-mark">&check;</span></td><td>Factory</td></tr>
+                <tr><td>DN 600</td><td>-15</td><td>+12</td><td>3.5</td><td><span class="dash-mark">&mdash;</span></td><td><span class="check-mark">&check;</span></td><td>Factory</td></tr>
+                <tr><td>DN 800</td><td>-20</td><td>+16</td><td>4.5</td><td><span class="dash-mark">&mdash;</span></td><td><span class="check-mark">&check;</span></td><td>Factory</td></tr>
+                <tr><td>DN 900</td><td>-23</td><td>+18</td><td>4.5</td><td><span class="check-mark">&check;</span></td><td><span class="check-mark">&check;</span></td><td>Factory</td></tr>
+                <tr><td>DN 1000</td><td>-25</td><td>+20</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="check-mark">&check;</span></td><td>Factory</td></tr>
+                <tr><td>DN 1100</td><td>-28</td><td>+22</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="dash-mark">&mdash;</span></td><td>Factory</td></tr>
+                <tr><td>DN 1200</td><td>-30</td><td>+24</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="check-mark">&check;</span></td><td>Factory</td></tr>
+                <tr><td>DN 1300</td><td>-33</td><td>+26</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="dash-mark">&mdash;</span></td><td>Factory</td></tr>
+                <tr><td>DN 1400</td><td>-35</td><td>+28</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="dash-mark">&mdash;</span></td><td>Factory</td></tr>
+                <tr><td>DN 1500</td><td>-38</td><td>+30</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="dash-mark">&mdash;</span></td><td>Factory</td></tr>
+                <tr><td>DN 1600</td><td>-40</td><td>+32</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="dash-mark">&mdash;</span></td><td>Factory</td></tr>
+                <tr class="project-supply"><td>DN 1800</td><td>-45</td><td>+36</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="dash-mark">&mdash;</span></td><td>Project / mobile factory</td></tr>
+                <tr class="project-supply"><td>DN 2000</td><td>-50</td><td>+40</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="dash-mark">&mdash;</span></td><td>Project / mobile factory</td></tr>
+                <tr class="project-supply"><td>DN 2200</td><td>-55</td><td>+44</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="dash-mark">&mdash;</span></td><td>Project / mobile factory</td></tr>
+                <tr class="project-supply"><td>DN 2400</td><td>-60</td><td>+48</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="dash-mark">&mdash;</span></td><td>Project / mobile factory</td></tr>
+                <tr class="project-supply"><td>DN 2600</td><td>-65</td><td>+52</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="dash-mark">&mdash;</span></td><td>Project / mobile factory</td></tr>
+                <tr class="project-supply"><td>DN 2800</td><td>-70</td><td>+56</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="dash-mark">&mdash;</span></td><td>Project / mobile factory</td></tr>
+                <tr class="project-supply"><td>DN 3000</td><td>-75</td><td>+60</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="dash-mark">&mdash;</span></td><td>Project / mobile factory</td></tr>
+                <tr class="project-supply"><td>DN 3200</td><td>-80</td><td>+64</td><td>5.0</td><td><span class="check-mark">&check;</span></td><td><span class="dash-mark">&mdash;</span></td><td>Project / mobile factory</td></tr>
+              </tbody>
+            </table>
+          </div>
 
-      <section class="photo-section photo-section-tight" aria-labelledby="calculator-gallery-title">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Installation guidance</p>
-          <h2 id="calculator-gallery-title">Documentation supports specification and construction review.</h2>
-          <p>
-            Installation guidelines and careful execution notes should be reviewed with project-specific soil, trench, and supervision conditions.
-          </p>
-        </div>
-
-        <div class="photo-grid photo-grid-three">
-          <figure class="photo-card reveal">
-            <img src="assets/images/media-test-setup.jpg" alt="Laboratory technician preparing a corrugated pipe specimen in a compression testing frame." loading="lazy">
-            <figcaption>
-              <span>Specimen preparation</span>
-              <strong>Use real lab imagery to explain how pipe samples enter the test cycle.</strong>
-            </figcaption>
-          </figure>
-          <figure class="photo-card reveal">
-            <img src="assets/images/media-ring-stiffness.jpg" alt="Pipe specimen under load inside a laboratory ring stiffness testing machine." loading="lazy">
-            <figcaption>
-              <span>Ring stiffness</span>
-              <strong>Reinforce the stiffness workflow with a clear view of the test frame and sample.</strong>
-            </figcaption>
-          </figure>
-          <figure class="photo-card reveal">
-            <img src="assets/images/media-factory-handling.jpg" alt="Large corrugated pipe section positioned on a fabrication and handling line inside the plant." loading="lazy">
-            <figcaption>
-              <span>Pipe context</span>
-              <strong>Link the engineering tool back to the actual pipe systems it helps specify.</strong>
-            </figcaption>
-          </figure>
-        </div>
+          <p class="diameter-table-note">DN500-DN1600 factory production. DN1800-DN3200 project-specific supply. Custom lengths available on request.</p>
+        </section>
       </section>
     </main>
 

@@ -199,15 +199,15 @@ if (calculatorForm) {
     const notes = [];
 
     if (executionType === "caseB" && soil && !soil.caseBAllowed) {
-      notes.push("Case B in the shared figure is shown for coarse grained material with fines below 12%.");
+      notes.push("Case B: coarse material with fines below 12%.");
     }
 
     if (soil?.borrowedPreferred && executionType !== "borrowed") {
-      notes.push("The step notes indicate clay conditions commonly move toward borrowed material rather than in-situ backfill.");
+      notes.push("Clay condition: borrowed material basis.");
     }
 
     if (selection.trenchRatio > 1.5 && selection.trenchRatio < 3) {
-      notes.push("Trench width falls between the published 1.5D and 3.0D columns, so the result is interpolated between those chart values.");
+      notes.push("Width interpolated between 1.5D and 3.0D.");
     }
 
     return notes.join(" ");
@@ -257,10 +257,10 @@ if (calculatorForm) {
 
     if (series.length === 0) {
       setUnsupportedResult(
-        mode === "stiffness" ? "Minimum Required Pipe Stiffness" : "Maximum Allowable Soil Cover",
-        "The shared charts do not publish a matching row for this diameter, installation case, and trench-width combination.",
+        mode === "stiffness" ? "Required SR class" : "Max soil cover",
+        "No published row for this combination.",
         advisory,
-        "Lookup failed because no published chart value exists for the selected combination."
+        "No published chart value."
       );
       return;
     }
@@ -268,15 +268,15 @@ if (calculatorForm) {
     if (mode === "stiffness") {
       const depth = Number(formData.get("pipeDepth"));
 
-      resultHeading.textContent = "Minimum Required Pipe Stiffness";
-      resultUnit.textContent = "kN/m2";
+      resultHeading.textContent = "Required SR class";
+      resultUnit.textContent = "kN/m\u00b2";
 
       if (!isPositiveNumber(trenchWidth) || !isPositiveNumber(depth)) {
         setUnsupportedResult(
-          "Minimum Required Pipe Stiffness",
-          "Enter a valid trench width and soil cover height to run the table lookup.",
+          "Required SR class",
+          "Enter valid positive values.",
           advisory,
-          "Lookup waits for valid positive numeric inputs before reading the published table."
+          "Waiting for valid inputs."
         );
         return;
       }
@@ -287,18 +287,18 @@ if (calculatorForm) {
         if (depth <= onlyPoint.cover) {
           resultNumber.textContent = formatClass(onlyPoint.stiffnessClass);
           resultCopy.textContent =
-            `For ${formatNumber(depth)} m cover, the only published class for this diameter/case is SR ${formatClass(onlyPoint.stiffnessClass)}, which remains within the chart limit of ${formatNumber(onlyPoint.cover)} m.`;
+            `Within SR ${formatClass(onlyPoint.stiffnessClass)} limit (${formatNumber(onlyPoint.cover)} m).`;
           resultWarning.textContent = advisory;
           resultFormula.textContent =
-            "Required stiffness is taken from the only published SR class available for the selected diameter and installation case.";
+            "Only published SR row.";
           return;
         }
 
         setUnsupportedResult(
-          "Minimum Required Pipe Stiffness",
-          `Requested cover of ${formatNumber(depth)} m exceeds the published limit of ${formatNumber(onlyPoint.cover)} m for SR ${formatClass(onlyPoint.stiffnessClass)}.`,
+          "Required SR class",
+          `Exceeds SR ${formatClass(onlyPoint.stiffnessClass)} limit (${formatNumber(onlyPoint.cover)} m).`,
           advisory,
-          "No higher published stiffness class is available in the supplied tables for this diameter/case."
+          "No higher published SR row."
         );
         return;
       }
@@ -306,10 +306,10 @@ if (calculatorForm) {
       if (depth <= series[0].cover) {
         resultNumber.textContent = formatClass(series[0].stiffnessClass);
         resultCopy.textContent =
-          `Requested cover of ${formatNumber(depth)} m is within the published SR ${formatClass(series[0].stiffnessClass)} limit of ${formatNumber(series[0].cover)} m. Recommended standard class: SR ${formatClass(series[0].stiffnessClass)}.`;
+          `Within SR ${formatClass(series[0].stiffnessClass)} limit (${formatNumber(series[0].cover)} m).`;
         resultWarning.textContent = advisory;
         resultFormula.textContent =
-          "Required stiffness is selected from the lowest published SR class whose allowable cover already exceeds the entered depth.";
+          "Lowest matching published SR class.";
         return;
       }
 
@@ -324,34 +324,34 @@ if (calculatorForm) {
 
           resultNumber.textContent = formatNumber(requiredStiffness);
           resultCopy.textContent =
-            `Requested cover of ${formatNumber(depth)} m sits between SR ${formatClass(lower.stiffnessClass)} (${formatNumber(lower.cover)} m) and SR ${formatClass(upper.stiffnessClass)} (${formatNumber(upper.cover)} m). Interpolated minimum stiffness: ${formatNumber(requiredStiffness)} kN/m2. Recommended standard class: SR ${formatClass(recommendedClass)}.`;
+            `Interpolated minimum: ${formatNumber(requiredStiffness)} kN/m\u00b2. Use SR ${formatClass(recommendedClass)}.`;
           resultWarning.textContent = advisory;
           resultFormula.textContent =
-            "Minimum required stiffness is interpolated between the two published SR rows whose allowable cover values bracket the entered depth.";
+            "Interpolated between published SR rows.";
           return;
         }
       }
 
       const highest = series[series.length - 1];
       setUnsupportedResult(
-        "Minimum Required Pipe Stiffness",
-        `Requested cover of ${formatNumber(depth)} m exceeds the highest published limit of ${formatNumber(highest.cover)} m at SR ${formatClass(highest.stiffnessClass)}.`,
+        "Required SR class",
+        `Exceeds SR ${formatClass(highest.stiffnessClass)} limit (${formatNumber(highest.cover)} m).`,
         advisory,
-        "The supplied tables do not include a higher SR class for this diameter/case."
+        "No higher published SR row."
       );
       return;
     }
 
     const targetStiffness = Number(formData.get("targetStiffness"));
-    resultHeading.textContent = "Maximum Allowable Soil Cover";
+    resultHeading.textContent = "Max soil cover";
     resultUnit.textContent = "m";
 
     if (!isPositiveNumber(trenchWidth) || !isPositiveNumber(targetStiffness)) {
       setUnsupportedResult(
-        "Maximum Allowable Soil Cover",
-        "Enter a valid trench width and stiffness value to run the table lookup.",
+        "Max soil cover",
+        "Enter valid positive values.",
         advisory,
-        "Lookup waits for valid positive numeric inputs before reading the published table."
+        "Waiting for valid inputs."
       );
       return;
     }
@@ -362,18 +362,18 @@ if (calculatorForm) {
       if (Math.abs(targetStiffness - onlyPoint.stiffnessClass) < 0.001) {
         resultNumber.textContent = formatNumber(onlyPoint.cover);
         resultCopy.textContent =
-          `For SR ${formatClass(targetStiffness)}, the published maximum soil cover is ${formatNumber(onlyPoint.cover)} m for this diameter and installation case.`;
+          `Published cover: ${formatNumber(onlyPoint.cover)} m.`;
         resultWarning.textContent = advisory;
         resultFormula.textContent =
-          "Maximum cover comes directly from the only published SR row available for the selected diameter and case.";
+          "Only published SR row.";
         return;
       }
 
       setUnsupportedResult(
-        "Maximum Allowable Soil Cover",
-        `Only SR ${formatClass(onlyPoint.stiffnessClass)} is published for this diameter and installation case.`,
+        "Max soil cover",
+        `Only SR ${formatClass(onlyPoint.stiffnessClass)} is published here.`,
         advisory,
-        "A depth lookup for the entered stiffness is not available because the supplied chart includes only one SR row here."
+        "Entered SR is outside the available row."
       );
       return;
     }
@@ -383,10 +383,10 @@ if (calculatorForm) {
 
     if (targetStiffness < lowest.stiffnessClass || targetStiffness > highest.stiffnessClass) {
       setUnsupportedResult(
-        "Maximum Allowable Soil Cover",
-        `Entered stiffness of SR ${formatNumber(targetStiffness)} falls outside the published support range for this combination.`,
+        "Max soil cover",
+        `SR ${formatNumber(targetStiffness)} is outside the published range.`,
         advisory,
-        `Available support range for this diameter/case is SR ${formatClass(lowest.stiffnessClass)} to SR ${formatClass(highest.stiffnessClass)}.`
+        `Available: SR ${formatClass(lowest.stiffnessClass)} to SR ${formatClass(highest.stiffnessClass)}.`
       );
       return;
     }
@@ -395,10 +395,10 @@ if (calculatorForm) {
       if (Math.abs(targetStiffness - series[index].stiffnessClass) < 0.001) {
         resultNumber.textContent = formatNumber(series[index].cover);
         resultCopy.textContent =
-          `At SR ${formatClass(targetStiffness)}, the published maximum soil cover is ${formatNumber(series[index].cover)} m for this selected diameter, case, and trench-width condition.`;
+          `Published cover: ${formatNumber(series[index].cover)} m.`;
         resultWarning.textContent = advisory;
         resultFormula.textContent =
-          "Maximum cover comes directly from the published chart row for the entered SR class.";
+          "Direct published SR row.";
         return;
       }
     }
@@ -411,11 +411,10 @@ if (calculatorForm) {
         const maxCover = interpolate(lower.stiffnessClass, lower.cover, upper.stiffnessClass, upper.cover, targetStiffness);
 
         resultNumber.textContent = formatNumber(maxCover);
-        resultCopy.textContent =
-          `Entered stiffness of SR ${formatNumber(targetStiffness)} sits between SR ${formatClass(lower.stiffnessClass)} and SR ${formatClass(upper.stiffnessClass)}. Maximum cover is interpolated to ${formatNumber(maxCover)} m.`;
+        resultCopy.textContent = `Interpolated cover: ${formatNumber(maxCover)} m.`;
         resultWarning.textContent = advisory;
         resultFormula.textContent =
-          "Maximum cover is interpolated between the two published SR rows that bracket the entered stiffness.";
+          "Interpolated between published SR rows.";
         return;
       }
     }

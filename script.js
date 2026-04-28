@@ -351,13 +351,13 @@ function updateScrollMotion() {
       const offset = index - motion;
       const distance = Math.min(Math.abs(offset), 1.8);
       const opacity = card.classList.contains("video-story-title-card")
-        ? clamp(1 - (distance * 1.85), 0, 1)
+        ? clamp(1 - (distance * 3.1), 0, 1)
         : clamp(1 - (distance * 1.35), 0, 1);
 
       card.style.setProperty("--card-offset", offset.toFixed(3));
       card.style.setProperty("--card-distance", distance.toFixed(3));
       card.style.opacity = opacity.toFixed(3);
-      card.classList.toggle("is-current", distance < 0.55);
+      card.classList.toggle("is-current", distance < 0.34);
     });
   });
 }

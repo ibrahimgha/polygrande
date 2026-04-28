@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Polygrande pipe calculator using published HDPE cover tables to estimate required stiffness or maximum soil cover.">
+  <meta name="description" content="PolyGrande pipeline depth calculator based on Egyptian Code of Practice guidance for water and drainage pipelines.">
   <meta name="theme-color" content="#1f5fa8">
-  <title>Polygrande | Pipe Calculator</title>
+  <title>PolyGrande | Pipeline Depth Calculator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -47,27 +47,26 @@
     <main>
       <section class="hero hero-calculator" id="top">
         <div class="hero-copy reveal">
-          <h1>Estimate stiffness and maximum soil cover from published tables.</h1>
+          <h1>Pipeline depth calculator.</h1>
           <p class="hero-text">
-            Use the published cover tables to estimate required pipe stiffness or maximum allowable cover for buried
-            HDPE pipe systems.
+            Based on the Egyptian Code of Practice (ECP 102/1) for water and drainage pipelines. Select your installation conditions to find either the maximum installation depth or the required pipe stiffness class.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#calculator">Start Calculation</a>
-            <a class="button button-secondary" href="index.html">Back to Main Site</a>
+            <a class="button button-primary" href="#calculator">Calculate</a>
+            <a class="button button-secondary" href="index.html">Back to PolyGrande</a>
           </div>
           <ul class="hero-metrics" aria-label="Calculator features">
             <li>
               <strong>Mode 1</strong>
-              <span>Enter cover depth and conditions to estimate minimum required stiffness.</span>
+              <span>Find the required SR class for a selected installation depth.</span>
             </li>
             <li>
               <strong>Mode 2</strong>
-              <span>Enter stiffness to estimate maximum allowable soil cover.</span>
+              <span>Find maximum depth for the selected pipe stiffness class.</span>
             </li>
             <li>
               <strong>Table Logic</strong>
-              <span>Uses SR 8, SR 16, and SR 31.5 values with interpolation between published limits.</span>
+              <span>Careful Execution applies when backfill stiffness >13 MPa with certified geotechnical supervision.</span>
             </li>
           </ul>
         </div>
@@ -97,18 +96,17 @@
       <section class="calculator-shell" id="calculator">
         <div class="section-heading reveal">
           <p class="eyebrow">Interactive tool</p>
-          <h2>Switch between stiffness estimation and maximum depth estimation.</h2>
+          <h2>Select installation conditions and calculate the required pipe class.</h2>
           <p>
-            The calculator uses the published cover-height tables for SR 8, SR 16, and SR 31.5. If trench width falls
-            between 1.5D and 3.0D, or stiffness falls between chart classes, the result is linearly interpolated.
+            Installation must follow the Egyptian Code of Practice for water and drainage pipelines, including compaction of backfill in layers. Results are recommendations and must be reviewed by the design consultant or contractor.
           </p>
         </div>
 
         <div class="calculator-layout">
           <section class="calculator-panel reveal">
             <div class="calculator-mode" role="tablist" aria-label="Calculation mode">
-              <button class="mode-toggle is-active" type="button" data-mode-toggle="stiffness" aria-selected="true">Calculate Stiffness</button>
-              <button class="mode-toggle" type="button" data-mode-toggle="depth" aria-selected="false">Calculate Max Depth</button>
+              <button class="mode-toggle is-active" type="button" data-mode-toggle="stiffness" aria-selected="true">Find required SR class</button>
+              <button class="mode-toggle" type="button" data-mode-toggle="depth" aria-selected="false">Find max depth</button>
             </div>
 
             <form class="calc-form" data-pipe-calculator>
@@ -180,8 +178,8 @@
               </div>
 
               <div class="calculator-actions">
-                <button class="button button-primary" type="submit">Run Table Lookup</button>
-                <p class="calculator-disclaimer">Uses the supplied SR 8 / 16 / 31.5 cover tables. Widths between 1.5D and 3.0D are interpolated.</p>
+                <button class="button button-primary" type="submit">Calculate</button>
+                <p class="calculator-disclaimer">Uses published SR 8 / 16 / 31.5 cover tables with interpolation between supported trench widths.</p>
               </div>
             </form>
           </section>
@@ -227,24 +225,23 @@
 
       <section class="calculator-notes">
         <article class="calculator-note reveal">
-          <p class="eyebrow">Published method</p>
-          <h3>Table-driven result</h3>
-          <p class="note-copy">The calculator reads from the shared maximum allowable soil cover tables for SR 8, SR 16, and SR 31.5.</p>
+          <p class="eyebrow">Engineering basis</p>
+          <h3>Egyptian Code based recommendation</h3>
+          <p class="note-copy">The calculator uses the shared maximum allowable soil cover tables and applies interpolation between published bounds.</p>
         </article>
         <article class="calculator-note reveal">
           <p class="eyebrow">Interpolation rule</p>
-          <h3>Useful between chart bounds</h3>
-          <p class="note-copy">If the trench width or stiffness falls between published chart values, the calculator interpolates between the nearest supported points.</p>
+          <h3>Careful execution</h3>
+          <p class="note-copy">Careful Execution applies when backfill stiffness is greater than 13 MPa with certified geotechnical supervision.</p>
         </article>
       </section>
 
       <section class="photo-section photo-section-tight" aria-labelledby="calculator-gallery-title">
         <div class="section-heading reveal">
-          <p class="eyebrow">Testing visuals</p>
-          <h2 id="calculator-gallery-title">Inspection and stiffness imagery keeps the calculator connected to the lab.</h2>
+          <p class="eyebrow">Installation guidance</p>
+          <h2 id="calculator-gallery-title">Documentation supports specification and construction review.</h2>
           <p>
-            These supporting photos keep the engineering page anchored in the physical testing environment, connecting
-            lookup results to specimen preparation, lab review, and ring stiffness verification.
+            Installation guidelines and careful execution notes should be reviewed with project-specific soil, trench, and supervision conditions.
           </p>
         </div>
 
@@ -280,7 +277,7 @@
           <span class="site-footer-brand-plate">
             <img class="site-footer-logo" src="assets/branding/polygrande-logo-white.png" alt="Polygrande">
           </span>
-          <p class="site-footer-note">Infrastructure-grade HDPE pipe systems backed by real production, testing, and field-readiness.</p>
+          <p class="site-footer-note">A brand of Hebeish Group. HDPE structured wall pipe manufacturer serving Egypt & North Africa since 1964.</p>
           <div class="site-footer-tags" aria-label="Footer highlights">
             <span>Production</span>
             <span>Testing</span>
@@ -303,16 +300,16 @@
         </nav>
 
         <div class="site-footer-column site-footer-contact">
-          <p class="site-footer-heading">Project Support</p>
-          <p>Use the site as a starting point for product, standards, and deployment conversations.</p>
-          <a class="site-footer-button" href="mailto:info@polygrande.example">Start A Discussion</a>
-          <a class="site-footer-mail" href="mailto:info@polygrande.example">info@polygrande.example</a>
+          <p class="site-footer-heading">Contact</p>
+          <p>Head Office: 18 Shagaret El Dor, El Zamalek, Floor 1 - Flat 4, Cairo - Egypt.</p>
+          <a class="site-footer-button" href="mailto:sales.polygrande@hebeishgroup.com">Contact Sales</a>
+          <a class="site-footer-mail" href="mailto:sales.polygrande@hebeishgroup.com">sales.polygrande@hebeishgroup.com</a>
         </div>
       </div>
 
       <div class="site-footer-bottom">
-        <p>Industrial HDPE pipe systems for infrastructure projects.</p>
-        <p>&copy; <span id="year"></span> Polygrande. All rights reserved.</p>
+        <p>Factory / Sales: Plot 3, 5th Industrial Zone, 6th October City - Egypt.</p>
+        <p>&copy; <span id="year"></span> PolyGrande - Hebeish Group - All rights reserved.</p>
       </div>
     </footer>
   </div>
